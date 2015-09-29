@@ -1,0 +1,919 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/main.css?v5">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900' type='text/css'>
+
+    <!-- controlando layout -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+
+</head>
+<body id="body" ng-app="ImageEditor" ng-strict-di>
+
+<div id="splash" ng-cloak>
+    <div id="splash-spinner"></div>
+</div>
+
+<div ng-controller="MainController" ng-cloak style="height: 100%">
+
+    <!--######## inizio menu  #############-->
+    <nav class="navbar navbar-inverse" ng-controller="TopPanelController" style="border-radius: 0">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">PHOTO TRANSFORM</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+
+                    <!--########  menu file #############-->
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">File</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="openUploadDialog2($event)">New</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="openUploadDialog($event)">Open</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="openSaveDialog($event)">Save</a></li>
+                        </ul>
+                    </li>
+
+                    <!--########  menu edit #############-->
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Edit
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+
+                            <!--########  rotate #############-->
+                            <li>
+                                <a>
+                                    <div ng-controller="RotateController" class="basics-item">
+                                        <div ng-click="startRotator($event)">
+                                            <i class="mdi mdi-rotate-right basics-icon"></i>
+
+                                            <div class="icon-title">Rotate</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a>
+                                    <div ng-controller="ResizeController" class="basics-item">
+                                        <div ng-click="startResizer($event)">
+                                            <i class="mdi mdi-open-with basics-icon"></i>
+
+                                            <div class="icon-title">Resize</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+
+                            <li>
+                                <a>
+                                    <div ng-controller="RoundedCornersController" class="basics-item">
+                                        <div ng-click="startRoundedCorners($event)">
+                                            <i class="mdi mdi-panorama-wide-angle basics-icon"></i>
+
+                                            <div class="icon-title">Round</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+                            <li>
+                                <a>
+                                    <div class="basics-item"
+                                         ng-class="{ disabled: canvas.fabric._objects.length <= 1 }">
+                                        <div ng-click="canvas.mergeObjects()">
+                                            <i class="mdi mdi-merge-type basics-icon"></i>
+
+                                            <div class="icon-title">Merge</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+
+                    <!--########  menu window #############-->
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Window
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-class="{ inactive: !historyPanelOpen }"
+                                   ng-click="toggleRightPanel('history', $event)">History</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-class="{ inactive: !objectsPanelOpen }"
+                                   ng-click="toggleRightPanel('objects', $event)">Layers</a></li>
+                        </ul>
+                    </li>
+
+                    <!--########  menu help #############-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Help</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-default active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked=""> Active projet <span
+                style="margin-left: 20px"> X</span>
+        </label>
+        <label class="btn btn-default">
+            <input type="radio" name="options" id="option2" autocomplete="off">Inactive Projet <span
+                style="margin-left: 20px"> X </span>
+        </label>
+    </div>
+
+    <!-- ###########    inizio opzioni   ############-->
+    <div class="panel_botton" style="background-color:#3b3b3b" id="panel_botton">
+
+
+    </div>
+    <!-- ###########    fine opzioni    ############-->
+
+
+    <!--  ###########     inizio panelli destra  #############-->
+    <section id="right-panels">
+
+        <section id="objects" class="md-whiteframe-z1" ng-controller="ObjectsPanelController">
+            <h3 ed-toggle-panel-visibility="objects"><span>Layers</span><i class="mdi mdi-expand-less"></i></h3>
+            <ul class="objects-panel list-unstyled" ed-objects-panel-sortable ed-pretty-scrollbar ed-scroll-axis="y">
+
+                <li class="object panel-item" ng-repeat="object in objects" ng-click="setAsActive(object)"
+                    ng-if="!object.ignore">
+                    <i class="mdi mdi-remove-red-eye toggle-visibility" ng-class="{ 'not-visible': !object.visible }"
+                       ng-click="toggleVisibility(object); $event.stopPropagation();" style="border-right: none;"></i>
+                    <i class="mdi mdi-delete delete-object"
+                       ng-click="deleteObject(object); $event.stopPropagation();"></i>
+                    <i class="mdi mdi-lock-outline lock-object" ng-class="{ 'not-locked': !object.locked }"
+                       ng-click="toggleLock(object); $event.stopPropagation();"></i>
+                    {{ spacify(object.name) || spacify(object.type) }}
+                </li>
+
+
+                <li ng-if="!canvas.fabric._objects.length" class="text-center"><h4>No layers yet.</h4></li>
+            </ul>
+        </section>
+
+        <section id="history" class="md-whiteframe-z1 panel-hidden">
+            <h3 ed-toggle-panel-visibility="history"><span>History</span><i class="mdi mdi-expand-less"></i></h3>
+            <ul class="history-panel list-unstyled" ed-pretty-scrollbar ed-scroll-axis="y">
+                <li class="history-item panel-item" ng-click="history.load(item)" ng-repeat="item in history.all">
+                    <i class="mdi mdi-{{ item.icon }} main-icon"></i>
+                    {{ spacify(item.name) }}
+                </li>
+                <li ng-if="history.all.length === 0" class="text-center"><h4>No history items yet.</h4></li>
+            </ul>
+        </section>
+    </section>
+    <!--  ###########      fine panelli destra    #############-->
+
+
+    <section ng-hide="!loading" id="spinner">
+        <md-progress-circular class="md-spinner" md-diameter="100" md-mode="indeterminate"></md-progress-circular>
+    </section>
+
+
+    <!--  ###########    inizio panelli sinistra    #############-->
+    <section id="left-sidebar" ed-tabs="basics" class="md-whiteframe-z1" s>
+
+        <div ng-controller="CropController">
+            <div ng-controller="CanvasBackgroundController">
+
+                <div id="sidebar-toggler" ed-toggle-sidebar>
+                    <md-button class="md-fab md-primary" aria-label="Toggle Sidebar">
+                        <i class="mdi mdi-edit show-icon"></i>
+                        <i class="mdi mdi-close close-icon"></i>
+                    </md-button>
+                </div>
+
+                <div id="navigation-bar">
+                    <div data-activates="move-tool" class="nav-item"><i class="zmdi zmdi-arrows"></i></div>
+                    <div data-activates="text" class="nav-item"><i class="zmdi zmdi-font"></i></div>
+                    <div data-activates="stickers" class="nav-item"><i class="zmdi zmdi-image-o"></i></div>
+                    <div data-activates="filters" class="nav-item"><i class="zmdi zmdi-filter-list"></i></div>
+                    <div data-activates="drawing" class="nav-item"><i class="zmdi zmdi-brush"></i></div>
+
+                    <div data-activates="erase-tool" class="nav-item"><i class="fa fa-eraser fa-1x"></i></div>
+
+                    <div data-activates="simple-shapes" class="nav-item"><i class="zmdi zmdi-square-o"></i></div>
+
+                    <div ng-click="cropper.start($event)">
+                        <div data-activates="crop-tool" class="nav-item"><i class="zmdi zmdi-crop"></i></div>
+                    </div>
+
+                    <div data-activates="zoom-tool" class="nav-item"><i class="zmdi zmdi-zoom-in"></i></div>
+
+                    <div ng-click="openPanel('canvasColor', $event)">
+                        <div data-activates="color-tool" class="nav-item"><i class="zmdi zmdi-format-color-fill"></i>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="tabs">
+
+                    <section id="move-tool" data-index="1" class="tab">
+                        <h2 class="tab-title">move tool</h2>
+                        <br/><br/>
+                    </section>
+
+                    <section id="text" data-index="2" class="tab" ng-controller="TextController">
+
+
+                        <div class="filter-inputs">
+                            <div class="filter-input">
+                                <md-select ng-model="filters.category" ng-change="fonts.paginator.filter(filters)"
+                                           placeholder="Select a Type">
+                                    <md-option value="serif">Serif</md-option>
+                                    <md-option value="sans-serif">Sans Serif</md-option>
+                                    <md-option value="display">Display</md-option>
+                                    <md-option value="handwriting">Handwriting</md-option>
+                                    <md-option value="monospace">Monospace</md-option>
+                                </md-select>
+                            </div>
+
+                            <md-input-container class="filter-input">
+                                <label>Search</label>
+                                <input type="text" ng-model="filters.family"
+                                       ng-change="fonts.paginator.filter(filters)">
+                            </md-input-container>
+                        </div>
+
+                        <div ng-hide="activeTab !== 'text'" class="pagination md-whiteframe-z1"
+                             ed-fonts-pagination></div>
+
+                        <section class="fonts-preview" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
+                            <div class="font" ng-style="{ 'font-family':  font.family }"
+                                 ng-repeat="font in fonts.paginator.currentItems"
+                                 ng-click="changeFont(font.family, $event)">{{
+                                font.family }}
+                            </div>
+
+
+
+                        </section>
+
+
+
+                        <div data-name="text" class="actions-menu wider md-whiteframe-z1"
+                             ng-class="activePanel == 'text' ? 'open' : 'closed'">
+
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }"
+                                     ed-pretty-scrollbar
+                                     ed-scroll-axis="y" ed-scroll-theme="light">
+
+                                <div class="md-slider">
+                                    <div class="slider-label">Font Size</div>
+                                    <md-slider aria-label="text size" step="1"
+                                               ng-change="text.setProperty('fontSize', fontSize)" ng-model="fontSize"
+                                               min="1"
+                                               max="100"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input type="number" ng-change="text.setProperty('fontSize', fontSize)"
+                                           ng-model="fontSize"/>
+                                </div>
+
+                                <div class="text-styles">
+                                    <div class="text-style-toolbar" ed-text-align-buttons>
+                                        <i data-align="left" class="mdi mdi-format-align-left"></i>
+                                        <i data-align="center" class="mdi mdi-format-align-center active"></i>
+                                        <i data-align="right" class="mdi mdi-format-align-right"></i>
+                                    </div>
+                                    <div class="text-style-toolbar text-decoration-buttons" ed-text-decoration-buttons>
+                                        <div data-decoration="underline" class="underline toolbar-btn">U</div>
+                                        <div data-decoration="line-through" class="line-through toolbar-btn">S</div>
+                                        <div data-decoration="overline" class="overline toolbar-btn">O</div>
+                                        <div data-decoration="italic" class="italic toolbar-btn">I</div>
+                                    </div>
+                                </div>
+
+                                <div class="md-inputs">
+                                    <md-input-container>
+                                        <label>Line Height</label>
+                                        <input type="number" min="1" max="100" ng-model="lineHeight"
+                                               ng-change="text.setProperty('lineHeight', lineHeight)">
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>Outline Width</label>
+                                        <input ng-disabled="!enableOutline" type="number" min="1" max="100"
+                                               ng-model="strokeWidth"
+                                               ng-change="text.setProperty('strokeWidth', strokeWidth)">
+                                    </md-input-container>
+                                </div>
+
+                            </section>
+                        </div>
+                    </section>
+
+                    <section id="stickers" class="tab" data-index="3" ng-controller="StickersController">
+
+                        <div data-name="stickers" class="actions-menu md-whiteframe-z1"
+                             ng-class="isPanelEnabled() ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>Sticker menu</h3></div>
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }"
+                                     ed-pretty-scrollbar
+                                     ed-scroll-axis="y" ed-scroll-theme="light">
+
+                            </section>
+                        </div>
+
+                        <div ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light" ed-stickers-categories>
+
+
+                            <!--<div class="btn-group">-->
+                                <!--<a href="#" class="btn btn-default">Categories</a>-->
+                                <!--<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>-->
+                                <!--<ul class="dropdown-menu">-->
+                                    <!--<li ng-repeat="category in categories" class="category-header" data-name="{{ category.name }}" ng-model="categoria2">{{ category.name }}</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+
+                            <!--<div ng-repeat="category in categories" class="category-header" data-name="{{ category.name }}">{{ category.name }}</div>-->
+
+                            <section ng-repeat="category in categories" class="sticker-category-container">
+
+                                <div class="category-stickers"
+                                     ng-class="{ 'open animated slideInDown': activeCategory === category.name, 'dark-bg': category.darkbg }">
+                                    <div ng-repeat="doodle in category.items track by $index"
+                                         ng-click="addToCanvas(category, $index+1, $event)" class="sticker">
+                                        <img class="img-responsive"
+                                             data-src="assets/images/stickers/{{category.name}}/{{$index+1}}.{{ category.type }}"/>
+                                    </div>
+                                </div>
+
+
+                            </section>
+                        </div>
+
+                    </section>
+
+                    <section id="filters" class="tab" data-index="4" ng-controller="FiltersController">
+
+                        <h2 class="tab-title">
+                            <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search Image">
+                                </div>
+                            </form>
+
+                            <button type="submit" class="btn btn-default">Browse Image</button></h2>
+
+                        <div class="filters-list row" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
+                            <figure ng-class="{ applied: filters.filterAlreadyApplied(filter.name) }"
+                                    ng-repeat="filter in filters.all" ng-click="filters.applyFilter(filter)"
+                                    class="filter col-sm-6">
+                                <div class="filter-image">
+                                    <img ng-src="assets/images/filters/{{ filter.name.toLowerCase() }}.png"
+                                         class="img-responsive md-whiteframe-z1"/>
+
+                                    <div ng-class="{ 'remove-only': !filter.options }" class="remove-filter-overlay">
+                                        <i class="mdi mdi-cancel"></i>
+                                        <i ng-if="filter.options"
+                                           ng-click="filters.lastAppliedFilter = filter; $event.stopPropagation();"
+                                           class="mdi mdi-settings"></i>
+                                    </div>
+                                </div>
+                                <figcaption>{{ filter.displayName || filter.name }}</figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="actions-menu md-whiteframe-z1"
+                             ng-class="filters.lastAppliedFilter.options ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>{{ filters.lastAppliedFilter.name }}</h3></div>
+
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }"
+                                     ed-pretty-scrollbar
+                                     ed-scroll-axis="y" ed-scroll-theme="light">
+                                <div ng-repeat="(key,value) in filters.lastAppliedFilter.options">
+
+                                    <section ng-if="!value.colorpicker && !value.select">
+                                        <div class="md-slider">
+                                            <div class="slider-label">{{ key == filters.lastAppliedFilter.name ?
+                                                'amount' :
+                                                key
+                                                }}
+                                            </div>
+                                            <md-slider
+                                                    md-discrete
+                                                    aria-label="{{ key }}"
+                                                    step="{{ value.step ? value.step : 1 }}"
+                                                    ng-model="filters.lastAppliedFilter.options[key].current"
+                                                    ng-change="filters.applyValue(filters.lastAppliedFilter.name, key, filters.lastAppliedFilter.options[key].current)"
+                                                    min="{{ value.min ? value.min : 1 }}"
+                                                    max="{{ value.max ? value.max : 250 }}"
+                                                    ></md-slider>
+                                        </div>
+                                        <div class="slider-input">
+                                            <input ng-if="!value.colorpicker" type="number"
+                                                   ng-change="filters.applyValue(filters.lastAppliedFilter.name, key, filters.lastAppliedFilter.options[key].current)"
+                                                   ng-model="filters.lastAppliedFilter.options[key].current"/>
+                                        </div>
+                                    </section>
+
+                                    <section ng-if="value.colorpicker" class="colorpicker">
+                                        <div class="colorpicker-label"><span>{{ key }}</span></div>
+                                        <input ed-discrete ng-model="filters.lastAppliedFilter.options[key].current"
+                                               start-color="{{ filters.lastAppliedFilter.options[key].current }}"
+                                               ed-color-picker="filters.applyValue(filters.lastAppliedFilter.name, key, color)"
+                                               type="text"/>
+                                    </section>
+
+                                    <section ng-if="value.select">
+                                        <div class="col-sm-8 pull-down">{{ key }}</div>
+                                        <div class="col-sm-4 no-padding">
+                                            <select class="form-control"
+                                                    ng-model="filters.lastAppliedFilter.options[key].current"
+                                                    ng-change="filters.applyValue(filters.lastAppliedFilter.name, key, filters.lastAppliedFilter.options[key].current)">
+                                                <option ng-repeat="mode in filters.lastAppliedFilter.options[key].available"
+                                                        value="{{ mode }}">{{ mode }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </section>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+
+                    <section id="drawing" class="tab" data-index="5" ng-controller="DrawingController">
+                        <div id="brushes">
+                            <div ng-repeat="brush in drawing.availableBrushes"
+                                 ng-class="{ active: drawing.activeBrushName == brush }" class="brush"
+                                 ng-click="changeBrush(brush, $event)">
+                                <img title="{{ brush }}" class="img-responsive"
+                                     ng-src="assets/images/brushes/{{brush}}.png"/>
+                            </div>
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }"
+                                     ed-pretty-scrollbar
+                                     ed-scroll-axis="y" ed-scroll-theme="light">
+                                <div class="md-slider">
+                                    <div class="slider-label">Brush Thickness</div>
+                                    <md-slider aria-label="brush thickness" step="1"
+                                               ng-model="drawing.params.brushWidth"
+                                               ng-change="drawing.setProperty('width', drawing.params.brushWidth)"
+                                               min="1"
+                                               max="100"></md-slider>
+                                </div>
+                                <div class="slider-input">
+                                    <input type="number"
+                                           ng-change="drawing.setProperty('width', drawing.params.brushWidth)"
+                                           ng-model="drawing.params.brushWidth"/>
+                                </div>
+
+                            </section>
+
+
+                        </div>
+
+                        <div data-name="drawing" class="actions-menu wider md-whiteframe-z1"
+                             ng-class="activePanel == 'drawing' ? 'open' : 'closed'">
+                            <div class="menu-header"><h3>brush</h3></div>
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }"
+                                     ed-pretty-scrollbar
+                                     ed-scroll-axis="y" ed-scroll-theme="light">
+
+                            </section>
+                        </div>
+                    </section>
+
+                    <section id="erase-tool" data-index="6" class="tab">
+                        <div class="zoom-slider">
+                            <md-slider aria-label="zoom" step="1" ng-model="zoom" ng-change="doZoom()"
+                                       min="{{ minScale }}"
+                                       max="{{ maxScale }}"></md-slider>
+                        </div>
+                    </section>
+
+                    <section id="simple-shapes" class="tab" data-index="7" ng-controller="SimpleShapesController">
+
+                        <div class="shapes-list">
+                            <div class="shape" data-name="{{ shape.name }}" ng-repeat="shape in shapes.available"
+                                 ng-click="shapes.addToCanvas(shape)">
+                                <div class="shape-image" id="{{ shape.name }}">
+                                    <div class="css-shape"></div>
+                                </div>
+                                <div class="shape-name">{{ shape.displayName || shape.name }}</div>
+                            </div>
+                        </div>
+
+                        <div class="actions-menu md-whiteframe-z1" ng-class="isPanelEnabled() ? 'open' : 'closed'">
+
+                            <div class="menu-header"><h3>{{ shapes.selected.displayName || shapes.selected.name }}</h3>
+                            </div>
+
+                            <section class="actions-menu-inner" ng-style="{ 'max-height': maxPanelHeight }"
+                                     ed-pretty-scrollbar
+                                     ed-scroll-axis="y" ed-scroll-theme="light">
+
+
+                                <div ng-repeat="group in shapes.selected.options | orderOptions" class="clearfix">
+
+                                    <div ng-repeat="(optionName, option) in group">
+
+                                        <section ng-if="option.type === 'slider'">
+                                            <div class="md-slider">
+                                                <div class="slider-label">{{ option.displayName || optionName }}</div>
+
+                                                <md-slider
+                                                        md-discrete
+                                                        aria-label="{{ optionName }}"
+                                                        step="{{ option.step ? option.step : 1 }}"
+                                                        ng-model="shapes.selected.options[group.name][optionName].current"
+                                                        ng-change="shapes.applyValue(group.name, shapes.selected.name, optionName, shapes.selected.options[group.name][optionName].current)"
+                                                        min="{{ option.min ? option.min : 1 }}"
+                                                        max="{{ option.max ? option.max : 250 }}"
+                                                        ng-disabled="!group.enabled"
+                                                        ></md-slider>
+                                            </div>
+                                            <div class="slider-input">
+                                                <input type="number"
+                                                       ng-change="shapes.applyValue(group.name, shapes.selected.name, optionName, shapes.selected.options[group.name][optionName].current)"
+                                                       ng-disabled="!group.enabled"
+                                                       ng-model="shapes.selected.options[group.name][optionName].current"/>
+                                            </div>
+                                        </section>
+
+
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+
+                    <section id="crop-tool" data-index="8" class="tab">
+                        <h3 class="tab-title">Crop</h3>
+
+                        <div data-name="crop" class="md-whiteframe-z1"
+                             ng-class="activePanel == 'crop' ? 'open' : 'closed'">
+
+                            <div class="row">
+                                <md-input-container class="col-sm-6">
+                                    <label>Width</label>
+                                    <input type="text" ng-model="width" ng-change="cropzone.setWidth(width)">
+                                </md-input-container>
+                                <md-input-container class="col-sm-6">
+                                    <label>Height</label>
+                                    <input type="text" ng-model="height" ng-change="cropzone.setHeight(height)">
+                                </md-input-container>
+                            </div>
+                            <div class="buttons">
+                                <md-button ng-click="cropper.crop()" class="md-primary md-raised">Crop</md-button>
+                                <md-button ng-click="cropper.stop()" class="md-raised">Cancel</md-button>
+                            </div>
+                        </div>
+
+                        <br/><br/>
+
+                    </section>
+
+                    <section id="zoom-tool" data-index="9" class="tab">
+                        <p>Zoom</p>
+
+                        <div ng-controller="ZoomController">
+                            <section class="zoom-container md-whiteframe-z1">
+                                <div class="current-zoom">{{ getCurrentZoom() }}%</div>
+                                <div class="zoom-slider">
+                                    <md-slider aria-label="zoom" step="1" ng-model="zoom" ng-change="doZoom()"
+                                               min="{{ minScale }}"
+                                               max="{{ maxScale }}"></md-slider>
+                                </div>
+
+
+                                <div class="action-icons">
+                                    <i ng-click="canvas.fitToScreen()"
+                                       class="mdi mdi-filter-center-focus fit-to-screen">
+                                        <md-tooltip md-delay="200">Fit to screen</md-tooltip>
+                                    </i>
+                                    <i ng-click="canvas.resetZoom()" class="mdi mdi-fullscreen original-size">
+                                        <md-tooltip md-delay="200">Original size</md-tooltip>
+                                    </i>
+                                </div>
+                            </section>
+                        </div>
+
+
+                    </section>
+
+                    <section id="color-tool" data-index="10" class="tab">
+
+                        <div data-name="canvasColor" class="md-whiteframe-z1 fluid"
+                             ng-class="activePanel == 'canvasColor' ? 'open' : 'closed'">
+
+                            <input ed-flat ed-color-picker="setBackground(color)" type="text"/>
+
+                        </div>
+
+
+                    </section>
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--  ###########   fine panelli sinistra     #############-->
+
+    <section id="viewport">
+
+        <section id="top-panel" class="md-whiteframe-z1" ng-controller="TopPanelController">
+            <md-button ng-click="openUploadDialog($event)">APRI</md-button>
+            <md-button ng-class="{ inactive: !historyPanelOpen }" ng-click="toggleRightPanel('history', $event)">
+                STORIA
+            </md-button>
+            <md-button ng-class="{ inactive: !objectsPanelOpen }" ng-click="toggleRightPanel('objects', $event)">
+                LIVELLI
+            </md-button>
+            <md-button ng-click="openSaveDialog($event)" class="md-primary md-raised">Save</md-button>
+        </section>
+
+        <canvas ng-show="started" id="canvas" class="md-whiteframe-z2"></canvas>
+    </section>
+
+    <!--
+        <script src="assets/js/scripts.min.js?v5"></script>
+        -->
+
+    <script src="assets/js/editor/resources/colors.js"></script>
+    <script src="assets/js/editor/resources/gradients.js"></script>
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/vendor/jquery-ui.js"></script>
+    <script src="assets/js/vendor/file-saver.js"></script>
+    <script src="assets/js/vendor/pagination.js"></script>
+    <script src="assets/js/vendor/spectrum.js"></script>
+    <script src="assets/js/vendor/hammer.js"></script>
+    <script src="assets/js/vendor/scrollbar.js"></script>
+    <script src="assets/js/vendor/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="assets/js/vendor/angular-material.js"></script>
+    <script src="assets/js/vendor/fabric.js"></script>
+    <script src="assets/js/editor/App.js"></script>
+    <script src="assets/js/editor/LocalStorage.js"></script>
+    <script src="assets/js/editor/Canvas.js"></script>
+    <script src="assets/js/editor/crop/cropper.js"></script>
+    <script src="assets/js/editor/crop/cropzone.js"></script>
+    <script src="assets/js/editor/crop/cropController.js"></script>
+    <script src="assets/js/editor/basics/RotateController.js"></script>
+    <script src="assets/js/editor/basics/CanvasBackgroundController.js"></script>
+    <script src="assets/js/editor/basics/ResizeController.js"></script>
+    <script src="assets/js/editor/basics/RoundedCornersController.js"></script>
+    <script src="assets/js/editor/zoomController.js"></script>
+    <script src="assets/js/editor/TopPanelController.js"></script>
+    <script src="assets/js/editor/directives/Tabs.js"></script>
+    <script src="assets/js/editor/directives/PrettyScrollbar.js"></script>
+    <script src="assets/js/editor/directives/ColorPicker.js"></script>
+    <script src="assets/js/editor/directives/FileUploader.js"></script>
+    <script src="assets/js/editor/directives/TogglePanelVisibility.js"></script>
+    <script src="assets/js/editor/directives/ToggleSidebar.js"></script>
+    <script src="assets/js/editor/text/Text.js"></script>
+    <script src="assets/js/editor/text/TextController.js"></script>
+    <script src="assets/js/editor/text/TextAlignButtons.js"></script>
+    <script src="assets/js/editor/text/TextDecorationButtons.js"></script>
+    <script src="assets/js/editor/text/Fonts.js"></script>
+    <script src="assets/js/editor/drawing/Drawing.js"></script>
+    <script src="assets/js/editor/drawing/DrawingController.js"></script>
+    <script src="assets/js/editor/drawing/RenderBrushesDirective.js"></script>
+    <script src="assets/js/editor/History.js"></script>
+    <script src="assets/js/editor/Saver.js"></script>
+    <script src="assets/js/editor/filters/FiltersController.js"></script>
+    <script src="assets/js/editor/filters/Filters.js"></script>
+    <script src="assets/js/editor/shapes/SimpleShapesController.js"></script>
+    <script src="assets/js/editor/shapes/StickersController.js"></script>
+    <script src="assets/js/editor/shapes/StickersCategories.js"></script>
+    <script src="assets/js/editor/shapes/SimpleShapes.js"></script>
+    <script src="assets/js/editor/shapes/Polygon.js"></script>
+    <script src="assets/js/editor/objects/ObjectsPanelController.js"></script>
+    <script src="assets/js/editor/objects/ObjectsPanelSortableDirective.js"></script>
+
+
+    <script type="application/ng-template" id="gradient-sheet-template">
+        <md-bottom-sheet class="bottom-sheet gradients-sheet">
+            <div class="items-list" ed-pretty-scrollbar>
+                <div ng-repeat="g in shapes.gradients"
+                     ng-style="{background: 'url(assets/images/gradients/'+$index+'.png)'}"
+                     ng-click="shapes.fillWithGradient($index+1)" class="item md-whiteframe-z1"></div>
+            </div>
+        </md-bottom-sheet>
+    </script>
+
+    <script type="application/ng-template" id="image-sheet-template">
+        <md-bottom-sheet class="bottom-sheet images-sheet">
+            <div class="upload-new" ng-click="showDialog($event)">
+                <i class="mdi mdi-cloud-upload"></i>
+                <span class="icon-label">Upload</span>
+            </div>
+            <div class="items-list" ed-pretty-scrollbar>
+                <div ng-repeat="t in shapes.textures track by $index"
+                     ng-style="{background: 'url(assets/images/textures/'+$index+'.png)'}"
+                     ng-click="shapes.fillWithImage('assets/images/textures/'+$index+'.png')"
+                     class="item md-whiteframe-z1"></div>
+            </div>
+        </md-bottom-sheet>
+    </script>
+
+    <script type="application/ng-template" id="texture-upload-dialog-template">
+        <md-dialog class="upload-file-dialog">
+            <md-input-container>
+                <label>Image URL</label>
+                <input type="text" ng-model="imageBgUrl" ng-change="shapes.fillWithImage(imageBgUrl)"
+                       ng-model-options="{ debounce: 500 }">
+            </md-input-container>
+
+            <h2><span>OR</span></h2>
+
+            <label class="pretty-upload">
+                <input type="file" ed-file-uploader="shapes.fillWithImage" ed-close-after/>
+                <i class="mdi mdi-cloud-upload"></i>
+                <span class="upload-button-label">Apri una immagine dal computer</span>
+            </label>
+        </md-dialog>
+    </script>
+
+    <script type="application/ng-template" id="save-image-dialog">
+        <md-dialog class="upload-file-dialog save-dialog">
+            <md-input-container>
+                <label>File Name</label>
+                <input type="text" ng-model="imageName">
+            </md-input-container>
+
+            <md-radio-group ng-model="imageType">
+                <md-radio-button value="jpeg">JPEG</md-radio-button>
+                <md-radio-button value="png">PNG</md-radio-button>
+            </md-radio-group>
+
+            <div ng-if="imageType === 'jpeg'">
+                <div class="slider-label">Quality {{ imageQuality }}</div>
+                <md-slider aria-label="Angle" md-discrete ng-model="imageQuality" step="1" min="1" max="10"></md-slider>
+            </div>
+
+            <md-button ng-click="saveImage($event)" class="md-raised md-primary">SALVA</md-button>
+
+            <div class="demo-alert" ng-if="isDemo">Image saving is disabled on demo site.</div>
+        </md-dialog>
+    </script>
+
+    <!--  ###########    modal apri + crea #### modifiche canvas.js line 57 button inserito per upload
+                        creato controller openUploadDialog2 line 32 #############-->
+    <script type="application/ng-template" id="main-image-upload-dialog-template2">
+        <md-dialog class="upload-file-dialog panel panel-default">
+            <h6>Presets:</h6>
+
+            <div>
+                <select>
+                    <option value="facebook" selected>Facebook Cover</option>
+                    <option value="google">aaa Cover</option>
+                    <option value="google">bbb Cover</option>
+                </select>
+            </div>
+
+            <h6> Custom size</h6>
+
+            <div class="new-canvas panel-body" ng-show="openImageMode === 'open'">
+                <md-input-container>
+                    <label>Width</label>
+                    <input min="1" max="5000" type="number" ng-model="canvasWidth">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Height</label>
+                    <input min="1" max="5000" type="number" ng-model="canvasHeight">
+                </md-input-container>
+
+                <div class="buttons">
+                    <md-button ng-click="createNewCanvas(canvasWidth, canvasHeight)" class="md-primary md-raised">
+                        Create
+                    </md-button>
+                    <md-button class="md-raised">
+                        <label class="pretty-upload" style="box-shadow: none; text-align: center">
+                            <input type="file" ed-file-uploader="showImagePreview"/>
+                            <span>UPLOAD</span>
+                        </label>
+                    </md-button>
+
+                    <div ng-show="canOpenImage">
+                        <div class="img-preview"></div>
+
+                        <div class="buttons">
+                            <md-button ng-click="openImage()" class="md-primary md-raised">OPEN</md-button>
+                            <md-button ng-click="closeUploadDialog()" class="md-raised">CLOSE</md-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <input type="checkbox" name="Transparent" value="Transparent">Transparent Background<br>
+            </div>
+
+        </md-dialog>
+    </script>
+
+    <script type="application/ng-template" id="main-image-upload-dialog-template">
+
+
+        <md-dialog class="upload-file-dialog list-group" id="apri_modal">
+
+            <div ng-show="openImageMode === 'open'">
+                <h3 class="list-group-item active">
+                    THIS WILL BE REPLACED <br/>
+                    WITH OUR LOGO
+                </h3>
+                <a href="#" ng-click="openImageMode = 'create'" class="list-group-item">
+                    <i class="zmdi zmdi-picture-in-picture"></i>
+                    CREATE A NEW IMAGE</a>
+                <a href="#" class="list-group-item">
+                    <label class="pretty-upload">
+                        <i class="mdi mdi-cloud-upload"></i>
+                        <input type="file" ed-file-uploader="showImagePreview"/>
+                        <span class="upload-button-label">Upload From Computer</span>
+                    </label>
+                </a>
+
+                <div ng-show="!canOpenImage">
+                    <a href="#" ng-click="openSampleImage()" class="list-group-item">
+                        <i class="zmdi zmdi-camera"></i>
+                        SAMPLE</a>
+                </div>
+
+
+                <div ng-show="canOpenImage">
+                    <div class="img-preview"></div>
+
+                    <div class="buttons">
+                        <md-button ng-click="openImage()" class="md-primary md-raised">OPEN</md-button>
+                        <md-button ng-click="closeUploadDialog()" class="md-raised">CLOSE</md-button>
+                    </div>
+                </div>
+            </div>
+
+            <!--  ###########    modal crea imagen vuota#############-->
+            <div class="new-canvas panel panel-default" ng-show="openImageMode === 'create'">
+
+                <div class="panel-body">
+                    <h6> Custom size</h6>
+                    <md-input-container>
+                        <label>Width</label>
+                        <input min="1" max="5000" type="number" ng-model="canvasWidth">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Height</label>
+                        <input min="1" max="5000" type="number" ng-model="canvasHeight">
+                    </md-input-container>
+
+                    <div class="buttons">
+                        <md-button ng-click="createNewCanvas(canvasWidth, canvasHeight)" class="md-primary md-raised">
+                            Create
+                        </md-button>
+                        <md-button ng-click="openImageMode = 'open'" class="md-raised">Open</md-button>
+
+                    </div>
+                </div>
+            </div>
+        </md-dialog>
+    </script>
+
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "less_and_sass",
+  "version": "0.0.0",
+  "description": "LESS y SASS",
+  "devDependencies": {
+  	"grunt": "~0.4.5",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-copy": "~0.5.0",
+    "matchdep": "~0.3.0"
+  }
+}

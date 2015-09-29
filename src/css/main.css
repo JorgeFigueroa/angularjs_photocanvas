@@ -1,0 +1,407 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#top-panel {
+  display: none;
+}
+
+#left-sidebar {
+  top: 92px;
+  background-color: transparent;
+}
+
+#right-panels {
+  top: 200px;
+}
+
+#viewport {
+  background-image: none;
+  top: 0px;
+}
+
+.basics-icon {
+  float: left;
+}
+
+md-dialog.upload-file-dialog.panel.panel-default.md-default-theme.transition-in {
+  padding: 34px;
+}
+
+.md-dialog-container {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+md-dialog.md-default-theme, .list-group-item {
+  background-color: #424242;
+  border: none;
+  border: 1px solid #3A3838;
+}
+
+.md-button.md-default-theme.md-primary.md-raised:hover:not([disabled]),
+.md-button.md-default-theme.md-primary,
+.md-button.md-default-theme.md-primary.md-raised,
+.md-primary, .md-button {
+  background-color: #2ecbfe;
+  color: #fff;
+}
+
+h3.list-group-item.active, .list-group-item.active:hover {
+  margin: 0;
+  padding: 30px;
+  text-align: center;
+  color: #000000;
+  background-color: #2ecbfe;
+}
+
+a.list-group-item {
+  box-sizing: border-box;
+  width: 400px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label,
+a.list-group-item, button.list-group-item,
+a.list-group-item:hover {
+  color: #fff;
+}
+
+#apri_modal .list-group-item input {
+  background-color: #282828;
+  color: #fff;
+  width: 100%;
+  border: solid 1px #676666;
+}
+
+#apri_modal .buttons {
+  margin-bottom: 26px;
+}
+
+.upload-file-dialog {
+  padding: 0;
+}
+
+input#input_00C, input#input_00D,
+input#input_00K, input#input_00L,
+input#input_00M, input#input_00N,
+#history h3, #objects h3,
+#history h3:hover, #objects h3:hover {
+  background-color: #282828;
+  color: #fff;
+}
+
+.upload-file-dialog .img-preview {
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
+
+a .zmdi, .upload-file-dialog .pretty-upload .mdi {
+  font-size: 65px;
+  color: #fff;
+}
+
+.list-group-item .pretty-upload:hover {
+  box-shadow: none;
+}
+
+/*
+.text-styles {
+  float: left;
+}
+
+md-input-container.col-sm-6.md-default-theme.md-input-has-value input {
+  width: 100px;
+}
+
+.upload-file-dialog .pretty-upload, label .pretty-upload {
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  box-shadow: none;
+}
+
+.resize_1 {
+  width: 7%;
+}
+*/
+#zoom-tool section.zoom-container.md-whiteframe-z1,
+#crop-tool .md-whiteframe-z1,
+#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
+  box-shadow: none;
+}
+
+#drawing, #basics, #text, #stickers, #filters, #simple-shapes,
+#move-tool, #stickers, #crop-tool, #erase-tool {
+  background-color: #dddddd;
+}
+
+#zoom-tool section.zoom-container.md-whiteframe-z1,
+#crop-tool .md-whiteframe-z1,
+#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
+  box-shadow: none;
+}
+
+#color-tool {
+  background-color: #2A2A2B;
+  margin-top: 341px;
+}
+
+#color-tool .sp-container {
+  background-color: transparent;
+}
+
+#color-tool .sp-picker-container,
+#color-tool .sp-container .sp-input-container {
+  border: none;
+}
+
+#color-tool .sp-container .sp-input-container > input {
+  color: #fff;
+}
+
+#zoom-tool .ng-scope {
+  margin-top: -9px;
+}
+
+#left-sidebar #zoom-tool {
+  background-color: #2A2A2B;
+  margin-top: 469px;
+  height: 59px;
+}
+
+#left-sidebar #zoom-tool .current-zoom {
+  background-color: #D9D9DA;
+  border-radius: 2px;
+  width: 40px;
+  float: right;
+  margin-top: 10px;
+}
+
+#left-sidebar #zoom-tool p {
+  font-size: 12px;
+  color: #fff;
+  margin: 0;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
+
+#navigation-bar, #tabs .tab-title, #tabs .tab-title {
+  background-color: #363739;
+}
+
+#simple-shapes #circle > .css-shape,
+#simple-shapes #rect > .css-shape,
+#simple-shapes #ellipse > .css-shape {
+  background-color: #2C2D2E;
+}
+
+#simple-shapes #triangle > .css-shape {
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 33px solid #2C2D2E;
+}
+
+#simple-shapes #polygon > .css-shape {
+  width: 24px;
+  height: 13.75px;
+  background: #2C2D2E;
+  position: relative;
+}
+
+#simple-shapes #polygon > .css-shape:after {
+  content: "";
+  position: absolute;
+  bottom: -6.25px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 6.25px solid #2C2D2E;
+}
+
+#simple-shapes #polygon > .css-shape:before {
+  content: "";
+  position: absolute;
+  top: -6.25px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 6.25px solid #2C2D2E;
+}
+
+#basics > .basics-item .basics-icon {
+  color: #2C2D2E;
+}
+
+#simple-shapes #polygon > .css-shape {
+  width: 24px;
+  height: 13.75px;
+  background-color: #2C2D2E;
+  position: relative;
+}
+
+#simple-shapes .shapes-list .shape {
+  border: 1px solid #A5A6A7;
+}
+
+#simple-shapes .shapes-list .shape:hover {
+  border: solid 1px #2AC1FE;
+}
+
+#navigation-bar .nav-item.active {
+  border: solid 1px #2AC1FE;
+  background-color: #363739;
+}
+
+#navigation-bar .zmdi {
+  color: #fff;
+}
+
+[class*=" mdi-"], [class^=mdi-] {
+  color: #fff;
+}
+
+section#simple-shapes {
+  margin-top: 359px;
+}
+
+#brushes > .brush:hover {
+  border: solid 1px #2AC1FE;
+}
+
+#basics > .basics-item {
+  border: 1px solid #A5A6A7;
+}
+
+#basics > .basics-item:hover {
+  border: solid 1px #2AC1FE;
+}
+
+#basics > .basics-item:hover .basics-icon, #basics > .basics-item:hover .icon-title {
+  color: #212222;
+}
+
+#stickers .category-header {
+  background-color: #292A2B;
+}
+
+section#crop-tool {
+  margin-top: 415px;
+}
+
+section#drawing {
+  margin-top: 250px;
+}
+
+section#erase-tool {
+  margin-top: 304px;
+}
+
+.light-theme .current {
+  background-color: #262729;
+}
+
+#stickers .category-stickers.open {
+  display: block;
+  overflow: scroll;
+  max-height: 380px;
+}
+
+#simple-shapes .shapes-list {
+  padding-top: 2px;
+}
+
+div#mCSB_7_container {
+  display: inline-block;
+  overflow: scroll;
+  max-height: 558px;
+}
+
+div#mCSB_3_container {
+  overflow: scroll;
+  max-height: 486px;
+}
+
+section#text {
+  top: -10px;
+  position: relative;
+}
+
+section#filters, section#move-tool, section#basics {
+  margin-top: -9px;
+}
+
+figure.filter.col-sm-6.ng-scope {
+  margin: 0;
+}
+
+#objects, #history {
+  background-color: #363739;
+}
+
+#objects h3 {
+  background-color: #1D1E1F;
+}
+
+#objects .delete-object, #objects .lock-object, #objects .toggle-visibility {
+  color: #ededed;
+  border-right: 1px solid #222325;
+}
+
+#history h3, #objects h3 {
+  background-color: #1D1E1F;
+  margin: 0;
+}
+
+#history .panel-item, #objects .panel-item {
+  border: none;
+  border-bottom: solid 1px #1F1F20;
+  margin-bottom: 0;
+  padding-left: 6%;
+}
+
+#history .panel-item, #objects .panel-item {
+  border: none;
+  border-bottom: solid 1px #222325;
+  color: #ededed;
+  font-weight: bold;
+}
+
+#history .panel-item > .main-icon, #objects .panel-item > .main-icon {
+  color: #ededed;
+}
+
+#history .panel-item:hover, #objects .panel-item:hover {
+  cursor: pointer;
+  background-color: #2AC1FE;
+}
+
+#history ul, #objects ul {
+  padding: 0;
+}
+
+.text-styles {
+  width: 100%;
+}
+
+.actions-menu .menu-header {
+  background-color: #262729;
+}
+
+#simple-shapes .actions-menu {
+  top: 64px;
+}
+
+/*# sourceMappingURL=main.css.map */
