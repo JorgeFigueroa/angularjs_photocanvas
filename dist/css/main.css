@@ -26,6 +26,10 @@
   float: left;
 }
 
+#apri_modal h1.upload-button-label {
+  font-size: 2em;
+}
+
 md-dialog.upload-file-dialog.panel.panel-default.md-default-theme.transition-in {
   padding: 34px;
 }
@@ -102,6 +106,16 @@ input#input_00M, input#input_00N,
 a .zmdi, .upload-file-dialog .pretty-upload .mdi {
   font-size: 65px;
   color: #fff;
+}
+
+#apri_modal i.zmdi {
+  width: 25%;
+  float: left;
+}
+
+#apri_modal h1.titolo_home {
+  float: left;
+  width: 73%;
 }
 
 .list-group-item .pretty-upload:hover {

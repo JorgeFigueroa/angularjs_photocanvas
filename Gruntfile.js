@@ -9,24 +9,10 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 expand: true,
-                cwd: 'src/',
-                src: ["**", "!css/**/*.less", "!css/**/*.scss"],
-                dest: 'dist/'
+                cwd: 'src/'
             }
         },
 
-        less: {
-            options: {
-                paths: ['src/css']
-            },
-            src: {        
-                expand: true,
-                cwd:    "src/css",
-                src:    "*.less",
-                ext:    ".css",
-                dest:   "src/css"
-            }
-        },
 
 		sass: {
             dist: {
@@ -49,17 +35,9 @@ module.exports = function(grunt) {
                 nospawn: true,
                 livereload: true
             },
-            less: {
-                files: ['src/css/**/*.less'],
-                tasks: ['less']
-            },
             sass: {
                 files: ['src/css/**/*.scss'],
                 tasks: ['sass']
-            },
-            copy: {
-                files: ['src/**'],
-                tasks: ['copy:main']
             }
         }
 		

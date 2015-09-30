@@ -35,15 +35,15 @@ angular.module('image.shapes')
                 onToggle: 'toggleBorder',
                 stroke: { type: 'colorpicker', current: '#2196F3', displayName: 'Color' },
                 strokeWidth: { type: 'slider', current: 5, max: 40, displayName: 'Width' }
-            },
-            shadow: {
+            }
+          /*  shadow: {
                 enabled: false,
                 onToggle: 'toggleShadow',
                 color: { type: 'colorpicker', current: 'rgba(0,0,0,0.5)'},
                 blur: { type: 'slider', current: 5, max: 80 },
                 offsetX: { type: 'slider', current: 8, max: 30 },
                 offsetY: { type: 'slider', current: 5, max: 30 }
-            }
+            }*/
         },
 
         available: [],
@@ -239,7 +239,7 @@ angular.module('image.shapes')
         displayName: 'rectangle',
         options: rectOptions
     });
-
+/*jorge_comentario
     var triangleOptions = angular.copy(shapes.baseOptions);
     triangleOptions.main.width = { type: 'slider', current: 140, min: 25 };
     triangleOptions.main.height = { type: 'slider', current: 140, min: 25 };
@@ -247,7 +247,7 @@ angular.module('image.shapes')
     shapes.available.push({
         name: 'triangle',
         options: triangleOptions
-    });
+    });*/
 
     var ellipse = angular.copy(shapes.baseOptions);
     ellipse.main.rx = { type: 'slider', current: 80, displayName: 'horizontal radius' };

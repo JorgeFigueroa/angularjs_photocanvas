@@ -50,9 +50,9 @@
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">File</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="openUploadDialog2($event)">New</a></li>
+                            <li><a ng-click="openUploadDialog($event)">New</a></li>
                             <li class="divider"></li>
-                            <li><a ng-click="openUploadDialog($event)">Open</a></li>
+                            <li><a ng-click="openUploadDialog2($event)">Open</a></li>
                             <li class="divider"></li>
                             <li><a ng-click="openSaveDialog($event)">Save</a></li>
                         </ul>
@@ -286,9 +286,7 @@
                             </div>
 
 
-
                         </section>
-
 
 
                         <div data-name="text" class="actions-menu wider md-whiteframe-z1"
@@ -357,13 +355,16 @@
                         <div ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light" ed-stickers-categories>
 
 
-                            <!--<div class="btn-group">-->
-                                <!--<a href="#" class="btn btn-default">Categories</a>-->
-                                <!--<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>-->
-                                <!--<ul class="dropdown-menu">-->
-                                    <!--<li ng-repeat="category in categories" class="category-header" data-name="{{ category.name }}" ng-model="categoria2">{{ category.name }}</li>-->
-                                <!--</ul>-->
-                            <!--</div>-->
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-default">Categories</a>
+                                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                   aria-expanded="false"><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="category in categories" class="category-header"
+                                        data-name="{{ category.name }}" ng-model="categoria2">{{ category.name }}
+                                    </li>
+                                </ul>
+                            </div>
 
                             <!--<div ng-repeat="category in categories" class="category-header" data-name="{{ category.name }}">{{ category.name }}</div>-->
 
@@ -393,7 +394,8 @@
                                 </div>
                             </form>
 
-                            <button type="submit" class="btn btn-default">Browse Image</button></h2>
+                            <button type="submit" class="btn btn-default">Browse Image</button>
+                        </h2>
 
                         <div class="filters-list row" ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light">
                             <figure ng-class="{ applied: filters.filterAlreadyApplied(filter.name) }"
@@ -792,21 +794,24 @@
 
     <!--  ###########    modal apri + crea #### modifiche canvas.js line 57 button inserito per upload
                         creato controller openUploadDialog2 line 32 #############-->
-    <script type="application/ng-template" id="main-image-upload-dialog-template2">
+    <script type="application/ng-template" id="main-image-upload-dialog-template">
         <md-dialog class="upload-file-dialog panel panel-default">
-            <h6>Presets:</h6>
 
-            <div>
-                <select>
-                    <option value="facebook" selected>Facebook Cover</option>
-                    <option value="google">aaa Cover</option>
-                    <option value="google">bbb Cover</option>
-                </select>
-            </div>
-
-            <h6> Custom size</h6>
 
             <div class="new-canvas panel-body" ng-show="openImageMode === 'open'">
+                <h6>Presets:</h6>
+
+                <div>
+                    <select>
+                        <option value="facebook" selected>Facebook Cover</option>
+                        <option value="google">aaa Cover</option>
+                        <option value="google">bbb Cover</option>
+                    </select>
+                </div>
+
+                <h6> Custom size</h6>
+
+
                 <md-input-container>
                     <label>Width</label>
                     <input min="1" max="5000" type="number" ng-model="canvasWidth">
@@ -818,15 +823,16 @@
                 </md-input-container>
 
                 <div class="buttons">
-                    <md-button ng-click="createNewCanvas(canvasWidth, canvasHeight)" class="md-primary md-raised">
-                        Create
-                    </md-button>
                     <md-button class="md-raised">
                         <label class="pretty-upload" style="box-shadow: none; text-align: center">
                             <input type="file" ed-file-uploader="showImagePreview"/>
-                            <span>UPLOAD</span>
+                            <span>Back</span>
                         </label>
                     </md-button>
+                    <md-button ng-click="createNewCanvas(canvasWidth, canvasHeight)" class="md-primary md-raised">
+                        Create
+                    </md-button>
+
 
                     <div ng-show="canOpenImage">
                         <div class="img-preview"></div>
@@ -837,42 +843,50 @@
                         </div>
                     </div>
                 </div>
+
+                <div>
+                    <input type="checkbox" name="Transparent" value="Transparent">Transparent Background<br>
+                </div>
+
             </div>
 
-            <div>
-                <input type="checkbox" name="Transparent" value="Transparent">Transparent Background<br>
-            </div>
 
         </md-dialog>
     </script>
 
-    <script type="application/ng-template" id="main-image-upload-dialog-template">
+    <script type="application/ng-template" id="main-image-upload-dialog-template2">
 
 
         <md-dialog class="upload-file-dialog list-group" id="apri_modal">
 
             <div ng-show="openImageMode === 'open'">
-                <h3 class="list-group-item active">
+                <h3 class="titolo-apri">
                     THIS WILL BE REPLACED <br/>
                     WITH OUR LOGO
                 </h3>
                 <a href="#" ng-click="openImageMode = 'create'" class="list-group-item">
-                    <i class="zmdi zmdi-picture-in-picture"></i>
-                    CREATE A NEW IMAGE</a>
-                <a href="#" class="list-group-item">
-                    <label class="pretty-upload">
-                        <i class="mdi mdi-cloud-upload"></i>
-                        <input type="file" ed-file-uploader="showImagePreview"/>
-                        <span class="upload-button-label">Upload From Computer</span>
-                    </label>
+                    <i class="fa fa-file-o"></i>
+                    <h1 class="titolo_home">CREATE A NEW IMAGE</h1>
+                    <p class="subtitulo_modal">Star from scratch with a blank image</p>
                 </a>
 
-                <div ng-show="!canOpenImage">
+                <a ng-show="!canOpenImage">
                     <a href="#" ng-click="openSampleImage()" class="list-group-item">
-                        <i class="zmdi zmdi-camera"></i>
-                        SAMPLE</a>
-                </div>
+                        <i class="fa fa-file-text-o"></i>
+                        <H1 class="titolo_home">BROWSER TEMPLATES</H1>
+                        <p class="subtitulo_modal">Star from on the 100 templates</p>
+                    </a>
+                </a>
 
+
+                <a href="#" class="list-group-item">
+                    <label class="pretty-upload">
+                        <i class="fa fa-upload"></i>
+                        <input type="file" ed-file-uploader="showImagePreview"/>
+                        <h1 class="upload-button-label titolo_home">UPLOAD YOUR OWN</h1>
+                        <p class="subtitulo_modal">Upload you own image or template</p>
+                    </label>
+                </a>
 
                 <div ng-show="canOpenImage">
                     <div class="img-preview"></div>
@@ -887,8 +901,21 @@
             <!--  ###########    modal crea imagen vuota#############-->
             <div class="new-canvas panel panel-default" ng-show="openImageMode === 'create'">
 
-                <div class="panel-body">
+
+                <div class="new-canvas panel-body" ng-show="openImageMode === 'create'">
+                    <h6>Presets:</h6>
+
+                    <div>
+                        <select>
+                            <option value="facebook" selected>Facebook Cover</option>
+                            <option value="google">aaa Cover</option>
+                            <option value="google">bbb Cover</option>
+                        </select>
+                    </div>
+
                     <h6> Custom size</h6>
+
+
                     <md-input-container>
                         <label>Width</label>
                         <input min="1" max="5000" type="number" ng-model="canvasWidth">
@@ -900,13 +927,30 @@
                     </md-input-container>
 
                     <div class="buttons">
+
+                        <md-button ng-click="openImageMode = 'open'" class="md-raised"><span class="caret"></span>Back
+                        </md-button>
+
                         <md-button ng-click="createNewCanvas(canvasWidth, canvasHeight)" class="md-primary md-raised">
                             Create
                         </md-button>
-                        <md-button ng-click="openImageMode = 'open'" class="md-raised">Open</md-button>
 
+                        <div ng-show="canOpenImage">
+                            <div class="img-preview"></div>
+
+                            <div class="buttons">
+                                <md-button ng-click="openImage()" class="md-primary md-raised">OPEN</md-button>
+                                <md-button ng-click="closeUploadDialog()" class="md-raised">CLOSE</md-button>
+                            </div>
+                        </div>
                     </div>
+
+                    <div>
+                        <input type="checkbox" name="Transparent" value="Transparent">Transparent Background<br>
+                    </div>
+
                 </div>
+
             </div>
         </md-dialog>
     </script>
