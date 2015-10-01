@@ -13,7 +13,6 @@ angular.module('image.shapes')
         { name: 'beach', items: new Array(22), type: 'svg' },
         { name: 'animals', items: new Array(10), type: 'png' },
         { name: 'clouds', items: new Array(15), type: 'png', darkbg: true },
-
     ];
 
     $scope.activeCategory = 'doodles';

@@ -104,7 +104,7 @@ gulp.task('scripts', function() {
 
 	])
 	//.pipe(sourcemaps.init())
-    .pipe(concat('scripts.min.js'))
+    .pipe(concat('scripts.min2.js'))
     //.pipe(sourcemaps.write())
     .pipe(uglify())
     .pipe(gulp.dest('assets/js')) 

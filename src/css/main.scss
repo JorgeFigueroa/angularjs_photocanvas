@@ -1,58 +1,61 @@
-//layout
+$color_testo : #fff;
+$color_fondo : #2ecbfe;
+$color_fondo2 : #424242;
+$fondo_tab : #2C2D2E;
+
+body {
+  background-color : #232425;;
+}
+
+//   layout
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin     : 0;
+  padding    : 0;
+  box-sizing : border-box;
 }
 
 #top-panel {
-  display: none;
+  display : none;
 }
 
 #left-sidebar {
-  top: 92px;
-  background-color: transparent;
+  top              : 146px;
+  background-color : transparent;
+  margin-left      : 10px;
 }
 
 #right-panels {
-  top: 200px;
+  top : 200px;
 }
 
 #viewport {
-  background-image: none;
-  top: 0px;
+  background-image : none;
+  top              : 0px;
 }
 
 //menu
 .basics-icon {
-  float: left;
+  float : left;
 }
 
-//####  modal apri - crea   ##########
-$color_testo: #fff;
-$color_fondo: #2ecbfe;
-$color_fondo2: #323333;
-
-.md-dialog-container {
-  background-color: rgba(0, 0, 0, 0.7);
+//   modal apri - crea
+.md-dialog-container,
+.md-dialog-container.ng-scope {
+  background-color : rgba(0, 0, 0, 0.7);
 }
-
-
-
-
 
 .md-button.md-default-theme.md-primary.md-raised:hover:not([disabled]),
 .md-button.md-default-theme.md-primary,
 .md-button.md-default-theme.md-primary.md-raised,
-.md-primary, .md-button, {
-  background-color: $color_fondo;
-  color: $color_testo;
+.md-primary, .md-button {
+  background-color : $color_fondo;
+  color            : $color_testo;
 }
 
 md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label,
 a.list-group-item, button.list-group-item,
 a.list-group-item:hover {
-  color: $color_testo;
+  color : $color_testo;
 }
 
 input#input_00C, input#input_00D,
@@ -60,363 +63,593 @@ input#input_00K, input#input_00L,
 input#input_00M, input#input_00N,
 #history h3, #objects h3,
 #history h3:hover, #objects h3:hover {
-  background-color: #282828;
-  color: #fff;
+  background-color : #282828;
+  color            : $color_testo;
 }
 
-
-
-
-
 md-dialog.md-default-theme {
-  padding: 0;
-  background-color: $color_fondo2;
+  padding          : 0;
+  background-color : $color_fondo2;
   h3.titolo-apri {
-    margin: 0;
-    padding: 30px;
-    text-align: center;
-    color: #000000;
-    background-color: $color_fondo;
-    font-size: 2.4em;
-    font-weight: 100;
+    margin           : 0;
+    padding          : 30px;
+    text-align       : center;
+    color            : #000000;
+    background-color : $color_fondo;
+    font-size        : 2.2em;
+    font-weight      : 100;
   }
   a.list-group-item:hover {
-    background-color: #3c3d3d;
+    background-color : #3c3d3d;
   }
   a.list-group-item {
-    box-sizing: border-box;
-    display: block;
-    width: 450px;
-    padding-left: 15%;
-    padding-right: 15%;
-    border: 1px solid #3A3838;
-    background-color: $color_fondo2;
+    box-sizing       : border-box;
+    display          : block;
+    padding-left     : 71px;
+    border           : 1px solid #3A3838;
+    background-color : $color_fondo2;
+    overflow         : hidden;
     i.fa {
-      width: 17%;
-      float: left;
-      font-size: 3.5em;
-      color: #fff;
+      width     : 17%;
+      float     : left;
+      font-size : 3.5em;
+      color     : #fff;
     }
     h1.titolo_home {
-      float: left;
-      width: 80%;
-      font-size: 1.5em;
-      margin: 0;
-      font-weight: 200;
+      float       : left;
+      width       : 80%;
+      font-size   : 1.4em;
+      margin      : 0;
+      font-weight : 200;
+
     }
-    p{
-      font-size: 1em;
-      font-weight: 100;
+    p {
+      font-size      : 1em;
+      font-weight    : 100;
+      letter-spacing : -0.7px;
     }
     .pretty-upload {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      text-align: left;
+      margin     : 0;
+      padding    : 0;
+      width      : 100%;
+      text-align : left;
     }
     .pretty-upload:hover {
-      box-shadow: none;
+      box-shadow : none;
     }
   }
   .img-preview {
-    margin: 0 auto;
-    border: none;
+    margin : 0 auto;
+    border : none;
   }
   .buttons {
-    margin-bottom: 20px;
+    margin-bottom : 20px;
+  }
+}
+
+.new-canvas.panel.panel-default {
+  margin           : 0;
+  background-color : transparent;
+  border           : solid 1px #3A3838;
+
+  input#input_003, input#input_004, input#input_005, input#input_006 {
+    padding-left: 8px;
+  }
+
+  input, button, select {
+    background-color : #1D1E1F;
+    color            : $color_testo;
+  }
+  .checkbox {
+    margin: 0;
+    label {
+      display      : inline-block;
+      cursor       : pointer;
+      position     : relative;
+      padding-left : 25px;
+      margin-right : 15px;
+      font-size    : 13px;
+    }
+    input[type=checkbox] {
+      display : none;
+    }
+    label:before {
+      content          : "";
+      display          : inline-block;
+      width            : 16px;
+      height           : 16px;
+      margin-right     : 10px;
+      position         : absolute;
+      left             : 0;
+      bottom           : 1px;
+      background-color : #1D1E1F;
+    }
+    label {
+      margin-bottom : 10px;
+    }
+    label:before {
+      border-radius : 3px;
+    }
+    input[type=checkbox]:checked + label:before {
+      content     : "\2713";
+      text-shadow : 1px 1px 1px rgba(0, 0, 0, .2);
+      font-size   : 15px;
+      color       : #f3f3f3;
+      text-align  : center;
+      line-height : 15px;
+    }
+  }
+  .panel-body {
+    padding : 0;
+  }
+  i.fa {
+    font-size : 1.5em;
+  }
+  .list-group {
+    margin-bottom : 0;
+  }
+  button {
+    width : 45%;
+  }
+  md-input-container.md-default-theme.md-input-has-value {
+    width : 42%;
+  }
+  span.separador {
+    float    : left;
+    position : relative;
+    top      : 26px;
+    margin   : 8px;
+  }
+  md-input-container {
+    padding : 2px 0px 26px;
+  }
+  .destra {
+    float : right;
+  }
+  .buttons {
+    text-align : justify;
+  }
+  a.list-group-item {
+    padding-right : 17%;
+    padding-left  : 17%;
+    width         : 350px;
   }
 
 }
 
-//####  fine modal apri - crea   ##########
+md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in {
+  padding    : 20px;
+  color      : $color_testo;
+  border     : solid 1px #3A3838;
+  box-shadow : 0 1px 1px rgba(0, 0, 0, 0.05);
 
-//  panello sotto opzioni
-/*
-.text-styles {
-  float: left;
+  input, .md-off, .md-on {
+    background-color : #1D1E1F;
+    color            : $color_testo;
+  }
+  md-radio-button.md-default-theme.md-checked .md-off {
+    border-color : $color_fondo;
+  }
+
+  md-slider.md-default-theme .md-thumb:after {
+    border-color     : $color_fondo;
+    background-color : $color_fondo;
+  }
+
 }
 
-md-input-container.col-sm-6.md-default-theme.md-input-has-value input {
-  width: 100px;
+//  barra sotto opzioni
+.barra {
+  background-color : #363739;
+  height           : 38px;
+  margin-top       : 1px;
 }
 
-.upload-file-dialog .pretty-upload, label .pretty-upload {
-  text-align: left;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  box-shadow: none;
+.barra3 {
+  position : fixed;
+  width    : 100%;
+  height   : 38px;
+  top      : 92px;
+  left     : 0;
+  padding  : 9px;
+  z-index  : 20;
+
+  i.zmdi, i.fa {
+    float       : left;
+    color       : #fff;
+    font-size   : 20px;
+    margin-left : 7px;
+  }
+  h6 {
+    float       : left;
+    font-size   : 14px;
+    margin-left : 12px;
+    margin-top  : 3px;
+  }
 }
 
-.resize_1 {
-  width: 7%;
-}
-*/
-//panello sinistra
-#zoom-tool section.zoom-container.md-whiteframe-z1,
-#crop-tool .md-whiteframe-z1,
-#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
-  box-shadow: none;
+//  panello sinistra
+#navigation-bar, #tabs .tab-title, #tabs .tab-title {
+  background-color : #363739;
+  border-radius    : 6px;
+  padding-bottom   : 5px;
+  padding-top      : 10px;
 }
 
-#drawing, #basics, #text, #stickers, #filters, #simple-shapes,
-#move-tool, #stickers, #crop-tool, #erase-tool, {
-  background-color: #dddddd;
+#navigation-bar {
+  .nav-item.active {
+    border           : solid 1px $color_fondo;
+    background-color : #363739;
+  }
+  .zmdi, .fa {
+    color     : $color_testo;
+    font-size : 40px;
+  }
+  .nav-item {
+    width         : 44px;
+    height        : 44px;
+    margin        : 0 auto;
+    padding       : 0;
+    margin-bottom : 5px;
+  }
 }
 
-#zoom-tool section.zoom-container.md-whiteframe-z1,
-#crop-tool .md-whiteframe-z1,
-#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
-  box-shadow: none;
+#text {
+  background-color : $fondo_tab;
+  top              : -10px;
+  position         : static;
+  .actions-menu.wider.ui-draggable {
+    left             : 70px;
+    top              : 183px;
+    background-color : #2A2A2B;
+  }
+  .btn-default {
+    color            : #000;
+    background-color : #D4D5D6;
+    border-color     : #424242;
+    font-size: 13px;
+    padding: 2px;
+    text-align: left;
+  }
+  .btn-group {
+    margin-bottom : 16px;
+  }
+  .text-style-toolbar {
+    border: none;
+  }
+  div#mCSB_4_container{
+    overflow: auto;
+    max-height: 260px;
+    background-color: #292A2B;
+  }
+  .font{
+    color: #fff;
+  }
+  .mdi,.toolbar-btn, input.ng-pristine,
+  .md-thumb:after, .md-sign:after, .md-sign{
+    background-color : #D4D5D6;
+    color: #000;
+    border: none;
+  }
+  .dropdown-menu {
+    position: static;
+  }
+
+}
+
+#stickers {
+  background-color : $fondo_tab;
+  margin-top       : 106px;
+  .category-header {
+    background-color : #292A2B;
+    margin-bottom    : 1px;
+  }
+  .category-stickers.open {
+    display    : block;
+    overflow   : auto;
+    max-height : 325px;
+  }
+  section.sticker-category-container.ng-scope {
+    background-color : #dddddd;
+  }
+  .btn-default {
+    color            : #000;
+    background-color : #dddddd;
+    border-color     : #424242;
+  }
+  .btn-group {
+    margin-bottom : 7px;
+  }
+  li:hover {
+    background-color : $color_fondo;
+  }
+}
+
+#filters.tab {
+  background-color : $fondo_tab;
+  margin-top       : 156px;
+  padding          : 7px;
+  .mCSB_container {
+    overflow         : auto;
+    display          : block;
+    max-height       : 289px;
+    background-color : #dddddd;
+    margin           : 0;
+    padding-top      : 6px;
+    border-radius    : 4px;
+  }
+  figure.filter.col-sm-6.ng-scope {
+    margin : 0;
+  }
+
+  input.form-control {
+    width     : 48%;
+    float     : left;
+    height    : 32px;
+    font-size : 11px;
+    display   : inline-block;
+  }
+  .fileUpload {
+    float         : right;
+    width         : 48%;
+    margin-bottom : 6px;
+    span {
+      font-size : 9px;
+    }
+  }
+  .fileUpload input.upload {
+    position  : absolute;
+    top       : 0;
+    right     : 0;
+    margin    : 0;
+    padding   : 0;
+    font-size : 20px;
+    cursor    : pointer;
+    opacity   : 0;
+    filter    : alpha(opacity=0);
+  }
+  .row {
+    margin : 0;
+    clear  : both;
+  }
+
+}
+
+#simple-shapes.tab {
+  margin-top : 305px;
+  padding : 4px;
+  background-color : $fondo_tab;
+  padding-top      : 4px;
+  .shapes-list {
+    background-color: #dddddd;
+    padding: 6px;
+  }
+
+  #polygon > .css-shape {
+    width      : 24px;
+    height     : 13.75px;
+    background : #2C2D2E;
+    position   : relative;
+  }
+  #polygon > .css-shape:after {
+    content      : "";
+    position     : absolute;
+    bottom       : -6.25px;
+    left         : 0;
+    width        : 0;
+    height       : 0;
+    border-left  : 12px solid transparent;
+    border-right : 12px solid transparent;
+    border-top   : 6.25px solid #2C2D2E;
+  }
+  #polygon > .css-shape:before {
+    content       : "";
+    position      : absolute;
+    top           : -6.25px;
+    left          : 0;
+    width         : 0;
+    height        : 0;
+    border-left   : 12px solid transparent;
+    border-right  : 12px solid transparent;
+    border-bottom : 6.25px solid #2C2D2E;
+  }
+  #polygon > .css-shape {
+    width            : 24px;
+    height           : 13.75px;
+    background-color : #2C2D2E;
+    position         : relative;
+  }
+  .shape {
+    border : 1px solid #A5A6A7;
+  }
+  .shape:hover {
+    border : solid 1px #2AC1FE;
+  }
+  #circle > .css-shape,
+  #rect > .css-shape,
+  #ellipse > .css-shape, {
+    background-color : #2C2D2E;
+  }
+}
+
+#drawing.tab {
+  margin-top       : 200px;
+  background-color : $fondo_tab;
+  padding          : 5px;
+  overflow         : hidden;
+  #brushes {
+    padding          : 6px 9px 2px 9px;
+    background-color : #dddddd;
+    border-radius    : 5px;
+    .brush {
+      border : 1px solid #7B7C7D;
+    }
+    > .brush:hover {
+      border : solid 1px $color_fondo;
+    }
+    > .brush.active {
+      border-color : $color_fondo;
+    }
+  }
+
+  .md-slider {
+    width      : 71%;
+    position   : absolute;
+    margin-top : -9px;
+  }
+  .slider-input {
+    float         : right;
+    margin-top    : 25px;
+    margin-bottom : 6px;
+  }
+  input {
+    width : 43px;
+  }
+  .slider-label {
+    color    : $color_testo;
+    position : relative;
+    top      : 12px;
+  }
+
+}
+
+#erase-tool {
+  background-color : $fondo_tab;
+  margin-top       : 250px;
+  overflow         : hidden;
+  .ng-scope {
+    margin-top : -9px;
+  }
+  .current-zoom {
+    background-color : #D9D9DA;
+    border-radius    : 2px;
+    width            : 40px;
+    float            : right;
+    margin-top       : 10px;
+  }
+  p {
+    font-size : 12px;
+    color     : #fff;
+    margin    : 0;
+    position  : relative;
+    top       : 3px;
+    left      : 3px;
+  }
+  .action-icons {
+    margin-left : 114px;
+  }
+  i.mdi {
+    font-size  : 32px;
+    color      : #fff;
+    margin-top : -14px;
+  }
+  i.mdi.mdi-filter-center-focus.fit-to-screen {
+    font-size  : 30px;
+    margin-top : -10px;
+  }
+}
+
+#zoom-tool.tab {
+  background-color : $fondo_tab;
+  margin-top       : 400px;
+  height           : 59px;
+  .ng-scope {
+    margin-top : -9px;
+  }
+  .current-zoom {
+    background-color : #D9D9DA;
+    border-radius    : 2px;
+    width            : 40px;
+    float            : right;
+    margin-top       : 10px;
+  }
+  p {
+    font-size : 12px;
+    color     : #fff;
+    margin    : 0;
+    position  : relative;
+    top       : 3px;
+    left      : 3px;
+  }
+  .action-icons {
+    margin-left : 114px;
+  }
+  i.mdi {
+    font-size  : 32px;
+    color      : #fff;
+    margin-top : -14px;
+  }
+  i.mdi.mdi-filter-center-focus.fit-to-screen {
+    font-size  : 30px;
+    margin-top : -10px;
+  }
+
+  .toolbar-btn, input.ng-pristine,
+  .md-thumb:after, .md-sign:after, .md-sign{
+    background-color : #D4D5D6;
+    color: #000;
+    border: none;
+  }
+
 }
 
 #color-tool {
-  background-color: #2A2A2B;
-  margin-top: 341px;
+  background-color : $fondo_tab;
+  margin-top       : 266px;
+  .sp-container {
+    background-color : transparent;
+  }
+  .sp-container .sp-input-container > input {
+    color : #fff;
+  }
+  .sp-picker-container,
+  .sp-container .sp-input-container {
+    border : none;
+  }
+  .md-whiteframe-z1 {
+    box-shadow : none;
+  }
 }
 
-#color-tool .sp-container {
-  background-color: transparent;
-}
-
-#color-tool .sp-picker-container,
-#color-tool .sp-container .sp-input-container {
-  border: none;
-}
-
-#color-tool .sp-container .sp-input-container > input {
-  color: #fff;
-}
-
-#zoom-tool .ng-scope {
-  margin-top: -9px;
-}
-
-#left-sidebar #zoom-tool {
-  background-color: #2A2A2B;
-  margin-top: 469px;
-  height: 59px;
-}
-
-#left-sidebar #zoom-tool .current-zoom {
-  background-color: #D9D9DA;
-  border-radius: 2px;
-  width: 40px;
-  float: right;
-  margin-top: 10px;
-}
-
-#left-sidebar #zoom-tool p {
-  font-size: 12px;
-  color: #fff;
-  margin: 0;
-  position: relative;
-  top: 3px;
-  left: 3px;
-}
-
-#navigation-bar, #tabs .tab-title, #tabs .tab-title {
-  background-color: #363739;
-}
-
-#simple-shapes #circle > .css-shape,
-#simple-shapes #rect > .css-shape,
-#simple-shapes #ellipse > .css-shape, {
-  background-color: #2C2D2E;
-}
-
-#simple-shapes #triangle > .css-shape {
-  width: 0;
-  height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-bottom: 33px solid #2C2D2E;
-}
-
-#simple-shapes #polygon > .css-shape {
-  width: 24px;
-  height: 13.75px;
-  background: #2C2D2E;
-  position: relative;
-}
-
-#simple-shapes #polygon > .css-shape:after {
-  content: "";
-  position: absolute;
-  bottom: -6.25px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 6.25px solid #2C2D2E;
-}
-
-#simple-shapes #polygon > .css-shape:before {
-  content: "";
-  position: absolute;
-  top: -6.25px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 6.25px solid #2C2D2E;
-}
-
-#basics > .basics-item .basics-icon {
-  color: #2C2D2E;
-}
-
-#simple-shapes #polygon > .css-shape {
-  width: 24px;
-  height: 13.75px;
-  background-color: #2C2D2E;
-  position: relative;
-}
-
-#simple-shapes .shapes-list .shape {
-  border: 1px solid #A5A6A7;
-}
-
-#simple-shapes .shapes-list .shape:hover {
-  border: solid 1px #2AC1FE;
-}
-
-#navigation-bar .nav-item.active {
-  border: solid 1px #2AC1FE;
-  background-color: #363739;
-}
-
-#navigation-bar .zmdi {
-  color: #fff;
-}
-
-[class*=" mdi-"], [class^=mdi-] {
-  color: #fff;
-}
-
-section#simple-shapes {
-  margin-top: 359px;
-}
-
-#brushes > .brush:hover {
-  border: solid 1px #2AC1FE;
-}
-
-#basics > .basics-item {
-  border: 1px solid #A5A6A7;
-}
-
-#basics > .basics-item:hover {
-  border: solid 1px #2AC1FE;
-}
-
-#basics > .basics-item:hover .basics-icon, #basics > .basics-item:hover .icon-title {
-  color: #212222;
-}
-
-#stickers .category-header {
-  background-color: #292A2B;
-}
-
-section#crop-tool {
-  margin-top: 415px;
-}
-
-section#drawing {
-  margin-top: 250px;
-}
-
-section#erase-tool {
-  margin-top: 304px;
-}
-
-.light-theme .current {
-  background-color: #262729;
-}
-
-#stickers .category-stickers.open {
-  display: block;
-  overflow: scroll;
-  max-height: 380px;
-}
-
-#simple-shapes .shapes-list {
-  padding-top: 2px;
-}
-
-div#mCSB_7_container {
-  display: inline-block;
-  overflow: scroll;
-  max-height: 558px;
-}
-
-div#mCSB_3_container {
-  overflow: scroll;
-  max-height: 486px;
-}
-
-section#text {
-  top: -10px;
-  position: relative;
-}
-
-section#filters, section#move-tool, section#basics {
-  margin-top: -9px;
-}
-
-figure.filter.col-sm-6.ng-scope {
-  margin: 0;
+.md-whiteframe-z1,
+#zoom-tool section.zoom-container.md-whiteframe-z1,
+#crop-tool .md-whiteframe-z1,
+#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
+  box-shadow : none;
 }
 
 //fine panello sinistra
 
 //panello destra
-#objects, #history {
-  background-color: #363739;
-}
-
-#objects h3 {
-  background-color: #1D1E1F;
-}
-
 #objects .delete-object, #objects .lock-object, #objects .toggle-visibility {
-  color: #ededed;
-  border-right: 1px solid #222325;
+  color        : #ededed;
+  border-right : 1px solid #222325;
 }
 
-#history h3, #objects h3 {
-  background-color: #1D1E1F;
-  margin: 0;
-}
-
-#history .panel-item, #objects .panel-item {
-  border: none;
-  border-bottom: solid 1px #1F1F20;
-  margin-bottom: 0;
-  padding-left: 6%;
-}
-
-#history .panel-item, #objects .panel-item {
-  border: none;
-  border-bottom: solid 1px #222325;
-  color: #ededed;
-  font-weight: bold;
-}
-
-#history .panel-item > .main-icon, #objects .panel-item > .main-icon {
-  color: #ededed;
-}
-
-#history .panel-item:hover, #objects .panel-item:hover {
-  cursor: pointer;
-  background-color: #2AC1FE;
-}
-
-#history ul, #objects ul {
-  padding: 0;
+#history, #objects {
+  background-color : #363739;
+  .panel-item {
+    border        : none;
+    border-bottom : solid 1px #1F1F20;
+    margin-bottom : 0;
+    padding-left  : 6%;
+    color         : #ededed;
+    font-weight   : bold;
+  }
+  .panel-item > .main-icon {
+    color : #ededed;
+  }
+  .panel-item:hover {
+    cursor           : pointer;
+    background-color : #2AC1FE;
+  }
+  ul {
+    padding : 0;
+  }
+  h3 {
+    background-color : #1D1E1F;
+    margin           : 0;
+  }
 }
 
 //fine panello destra
@@ -424,19 +657,16 @@ figure.filter.col-sm-6.ng-scope {
 //tercer panello modal
 
 .text-styles {
-  width: 100%;
+  width : 100%;
 }
 
 .actions-menu .menu-header {
-  background-color: #262729;
+  background-color : #262729;
 }
 
 #simple-shapes .actions-menu {
-  top: 64px;
+  top : 64px;
 }
-
-
-
 
 
 

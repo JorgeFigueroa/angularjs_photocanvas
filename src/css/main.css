@@ -1,3 +1,7 @@
+body {
+  background-color: #232425;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +13,9 @@
 }
 
 #left-sidebar {
-  top: 92px;
+  top: 146px;
   background-color: transparent;
+  margin-left: 10px;
 }
 
 #right-panels {
@@ -26,7 +31,8 @@
   float: left;
 }
 
-.md-dialog-container {
+.md-dialog-container,
+.md-dialog-container.ng-scope {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -55,7 +61,7 @@ input#input_00M, input#input_00N,
 
 md-dialog.md-default-theme {
   padding: 0;
-  background-color: #323333;
+  background-color: #424242;
 }
 md-dialog.md-default-theme h3.titolo-apri {
   margin: 0;
@@ -63,7 +69,7 @@ md-dialog.md-default-theme h3.titolo-apri {
   text-align: center;
   color: #000000;
   background-color: #2ecbfe;
-  font-size: 2.4em;
+  font-size: 2.2em;
   font-weight: 100;
 }
 md-dialog.md-default-theme a.list-group-item:hover {
@@ -72,11 +78,10 @@ md-dialog.md-default-theme a.list-group-item:hover {
 md-dialog.md-default-theme a.list-group-item {
   box-sizing: border-box;
   display: block;
-  width: 450px;
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 71px;
   border: 1px solid #3A3838;
-  background-color: #323333;
+  background-color: #424242;
+  overflow: hidden;
 }
 md-dialog.md-default-theme a.list-group-item i.fa {
   width: 17%;
@@ -87,13 +92,14 @@ md-dialog.md-default-theme a.list-group-item i.fa {
 md-dialog.md-default-theme a.list-group-item h1.titolo_home {
   float: left;
   width: 80%;
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin: 0;
   font-weight: 200;
 }
 md-dialog.md-default-theme a.list-group-item p {
   font-size: 1em;
   font-weight: 100;
+  letter-spacing: -0.7px;
 }
 md-dialog.md-default-theme a.list-group-item .pretty-upload {
   margin: 0;
@@ -112,116 +118,297 @@ md-dialog.md-default-theme .buttons {
   margin-bottom: 20px;
 }
 
-/*
-.text-styles {
-  float: left;
-}
-
-md-input-container.col-sm-6.md-default-theme.md-input-has-value input {
-  width: 100px;
-}
-
-.upload-file-dialog .pretty-upload, label .pretty-upload {
-  text-align: left;
-  width: 100%;
-  padding: 0;
+.new-canvas.panel.panel-default {
   margin: 0;
-  display: inline-block;
-  box-shadow: none;
-}
-
-.resize_1 {
-  width: 7%;
-}
-*/
-#zoom-tool section.zoom-container.md-whiteframe-z1,
-#crop-tool .md-whiteframe-z1,
-#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
-  box-shadow: none;
-}
-
-#drawing, #basics, #text, #stickers, #filters, #simple-shapes,
-#move-tool, #stickers, #crop-tool, #erase-tool {
-  background-color: #dddddd;
-}
-
-#zoom-tool section.zoom-container.md-whiteframe-z1,
-#crop-tool .md-whiteframe-z1,
-#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
-  box-shadow: none;
-}
-
-#color-tool {
-  background-color: #2A2A2B;
-  margin-top: 341px;
-}
-
-#color-tool .sp-container {
   background-color: transparent;
+  border: solid 1px #3A3838;
 }
-
-#color-tool .sp-picker-container,
-#color-tool .sp-container .sp-input-container {
-  border: none;
+.new-canvas.panel.panel-default input#input_003, .new-canvas.panel.panel-default input#input_004, .new-canvas.panel.panel-default input#input_005, .new-canvas.panel.panel-default input#input_006 {
+  padding-left: 8px;
 }
-
-#color-tool .sp-container .sp-input-container > input {
+.new-canvas.panel.panel-default input, .new-canvas.panel.panel-default button, .new-canvas.panel.panel-default select {
+  background-color: #1D1E1F;
   color: #fff;
 }
-
-#zoom-tool .ng-scope {
-  margin-top: -9px;
-}
-
-#left-sidebar #zoom-tool {
-  background-color: #2A2A2B;
-  margin-top: 469px;
-  height: 59px;
-}
-
-#left-sidebar #zoom-tool .current-zoom {
-  background-color: #D9D9DA;
-  border-radius: 2px;
-  width: 40px;
-  float: right;
-  margin-top: 10px;
-}
-
-#left-sidebar #zoom-tool p {
-  font-size: 12px;
-  color: #fff;
+.new-canvas.panel.panel-default .checkbox {
   margin: 0;
+}
+.new-canvas.panel.panel-default .checkbox label {
+  display: inline-block;
+  cursor: pointer;
   position: relative;
-  top: 3px;
-  left: 3px;
+  padding-left: 25px;
+  margin-right: 15px;
+  font-size: 13px;
+}
+.new-canvas.panel.panel-default .checkbox input[type=checkbox] {
+  display: none;
+}
+.new-canvas.panel.panel-default .checkbox label:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  background-color: #1D1E1F;
+}
+.new-canvas.panel.panel-default .checkbox label {
+  margin-bottom: 10px;
+}
+.new-canvas.panel.panel-default .checkbox label:before {
+  border-radius: 3px;
+}
+.new-canvas.panel.panel-default .checkbox input[type=checkbox]:checked + label:before {
+  content: "\2713";
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  color: #f3f3f3;
+  text-align: center;
+  line-height: 15px;
+}
+.new-canvas.panel.panel-default .panel-body {
+  padding: 0;
+}
+.new-canvas.panel.panel-default i.fa {
+  font-size: 1.5em;
+}
+.new-canvas.panel.panel-default .list-group {
+  margin-bottom: 0;
+}
+.new-canvas.panel.panel-default button {
+  width: 45%;
+}
+.new-canvas.panel.panel-default md-input-container.md-default-theme.md-input-has-value {
+  width: 42%;
+}
+.new-canvas.panel.panel-default span.separador {
+  float: left;
+  position: relative;
+  top: 26px;
+  margin: 8px;
+}
+.new-canvas.panel.panel-default md-input-container {
+  padding: 2px 0px 26px;
+}
+.new-canvas.panel.panel-default .destra {
+  float: right;
+}
+.new-canvas.panel.panel-default .buttons {
+  text-align: justify;
+}
+.new-canvas.panel.panel-default a.list-group-item {
+  padding-right: 17%;
+  padding-left: 17%;
+  width: 350px;
+}
+
+md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in {
+  padding: 20px;
+  color: #fff;
+  border: solid 1px #3A3838;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in input, md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in .md-off, md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in .md-on {
+  background-color: #1D1E1F;
+  color: #fff;
+}
+md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in md-radio-button.md-default-theme.md-checked .md-off {
+  border-color: #2ecbfe;
+}
+md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in md-slider.md-default-theme .md-thumb:after {
+  border-color: #2ecbfe;
+  background-color: #2ecbfe;
+}
+
+.barra {
+  background-color: #363739;
+  height: 38px;
+  margin-top: 1px;
+}
+
+.barra3 {
+  position: fixed;
+  width: 100%;
+  height: 38px;
+  top: 92px;
+  left: 0;
+  padding: 9px;
+  z-index: 20;
+}
+.barra3 i.zmdi, .barra3 i.fa {
+  float: left;
+  color: #fff;
+  font-size: 20px;
+  margin-left: 7px;
+}
+.barra3 h6 {
+  float: left;
+  font-size: 14px;
+  margin-left: 12px;
+  margin-top: 3px;
 }
 
 #navigation-bar, #tabs .tab-title, #tabs .tab-title {
   background-color: #363739;
+  border-radius: 6px;
+  padding-bottom: 5px;
+  padding-top: 10px;
 }
 
-#simple-shapes #circle > .css-shape,
-#simple-shapes #rect > .css-shape,
-#simple-shapes #ellipse > .css-shape {
+#navigation-bar .nav-item.active {
+  border: solid 1px #2ecbfe;
+  background-color: #363739;
+}
+#navigation-bar .zmdi, #navigation-bar .fa {
+  color: #fff;
+  font-size: 40px;
+}
+#navigation-bar .nav-item {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+#text {
   background-color: #2C2D2E;
+  top: -10px;
+  position: static;
+}
+#text .actions-menu.wider.ui-draggable {
+  left: 70px;
+  top: 183px;
+  background-color: #2A2A2B;
+}
+#text .btn-default {
+  color: #000;
+  background-color: #D4D5D6;
+  border-color: #424242;
+  font-size: 13px;
+  padding: 2px;
+  text-align: left;
+}
+#text .btn-group {
+  margin-bottom: 16px;
+}
+#text .text-style-toolbar {
+  border: none;
+}
+#text div#mCSB_4_container {
+  overflow: auto;
+  max-height: 260px;
+  background-color: #292A2B;
+}
+#text .font {
+  color: #fff;
+}
+#text .mdi, #text .toolbar-btn, #text input.ng-pristine,
+#text .md-thumb:after, #text .md-sign:after, #text .md-sign {
+  background-color: #D4D5D6;
+  color: #000;
+  border: none;
+}
+#text .dropdown-menu {
+  position: static;
 }
 
-#simple-shapes #triangle > .css-shape {
-  width: 0;
-  height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-bottom: 33px solid #2C2D2E;
+#stickers {
+  background-color: #2C2D2E;
+  margin-top: 106px;
+}
+#stickers .category-header {
+  background-color: #292A2B;
+  margin-bottom: 1px;
+}
+#stickers .category-stickers.open {
+  display: block;
+  overflow: auto;
+  max-height: 325px;
+}
+#stickers section.sticker-category-container.ng-scope {
+  background-color: #dddddd;
+}
+#stickers .btn-default {
+  color: #000;
+  background-color: #dddddd;
+  border-color: #424242;
+}
+#stickers .btn-group {
+  margin-bottom: 7px;
+}
+#stickers li:hover {
+  background-color: #2ecbfe;
 }
 
-#simple-shapes #polygon > .css-shape {
+#filters.tab {
+  background-color: #2C2D2E;
+  margin-top: 156px;
+  padding: 7px;
+}
+#filters.tab .mCSB_container {
+  overflow: auto;
+  display: block;
+  max-height: 289px;
+  background-color: #dddddd;
+  margin: 0;
+  padding-top: 6px;
+  border-radius: 4px;
+}
+#filters.tab figure.filter.col-sm-6.ng-scope {
+  margin: 0;
+}
+#filters.tab input.form-control {
+  width: 48%;
+  float: left;
+  height: 32px;
+  font-size: 11px;
+  display: inline-block;
+}
+#filters.tab .fileUpload {
+  float: right;
+  width: 48%;
+  margin-bottom: 6px;
+}
+#filters.tab .fileUpload span {
+  font-size: 9px;
+}
+#filters.tab .fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+#filters.tab .row {
+  margin: 0;
+  clear: both;
+}
+
+#simple-shapes.tab {
+  margin-top: 305px;
+  padding: 4px;
+  background-color: #2C2D2E;
+  padding-top: 4px;
+}
+#simple-shapes.tab .shapes-list {
+  background-color: #dddddd;
+  padding: 6px;
+}
+#simple-shapes.tab #polygon > .css-shape {
   width: 24px;
   height: 13.75px;
   background: #2C2D2E;
   position: relative;
 }
-
-#simple-shapes #polygon > .css-shape:after {
+#simple-shapes.tab #polygon > .css-shape:after {
   content: "";
   position: absolute;
   bottom: -6.25px;
@@ -232,8 +419,7 @@ md-input-container.col-sm-6.md-default-theme.md-input-has-value input {
   border-right: 12px solid transparent;
   border-top: 6.25px solid #2C2D2E;
 }
-
-#simple-shapes #polygon > .css-shape:before {
+#simple-shapes.tab #polygon > .css-shape:before {
   content: "";
   position: absolute;
   top: -6.25px;
@@ -244,119 +430,164 @@ md-input-container.col-sm-6.md-default-theme.md-input-has-value input {
   border-right: 12px solid transparent;
   border-bottom: 6.25px solid #2C2D2E;
 }
-
-#basics > .basics-item .basics-icon {
-  color: #2C2D2E;
-}
-
-#simple-shapes #polygon > .css-shape {
+#simple-shapes.tab #polygon > .css-shape {
   width: 24px;
   height: 13.75px;
   background-color: #2C2D2E;
   position: relative;
 }
-
-#simple-shapes .shapes-list .shape {
+#simple-shapes.tab .shape {
   border: 1px solid #A5A6A7;
 }
-
-#simple-shapes .shapes-list .shape:hover {
+#simple-shapes.tab .shape:hover {
   border: solid 1px #2AC1FE;
 }
-
-#navigation-bar .nav-item.active {
-  border: solid 1px #2AC1FE;
-  background-color: #363739;
+#simple-shapes.tab #circle > .css-shape,
+#simple-shapes.tab #rect > .css-shape,
+#simple-shapes.tab #ellipse > .css-shape {
+  background-color: #2C2D2E;
 }
 
-#navigation-bar .zmdi {
-  color: #fff;
+#drawing.tab {
+  margin-top: 200px;
+  background-color: #2C2D2E;
+  padding: 5px;
+  overflow: hidden;
 }
-
-[class*=" mdi-"], [class^=mdi-] {
-  color: #fff;
+#drawing.tab #brushes {
+  padding: 6px 9px 2px 9px;
+  background-color: #dddddd;
+  border-radius: 5px;
 }
-
-section#simple-shapes {
-  margin-top: 359px;
+#drawing.tab #brushes .brush {
+  border: 1px solid #7B7C7D;
 }
-
-#brushes > .brush:hover {
-  border: solid 1px #2AC1FE;
+#drawing.tab #brushes > .brush:hover {
+  border: solid 1px #2ecbfe;
 }
-
-#basics > .basics-item {
-  border: 1px solid #A5A6A7;
+#drawing.tab #brushes > .brush.active {
+  border-color: #2ecbfe;
 }
-
-#basics > .basics-item:hover {
-  border: solid 1px #2AC1FE;
-}
-
-#basics > .basics-item:hover .basics-icon, #basics > .basics-item:hover .icon-title {
-  color: #212222;
-}
-
-#stickers .category-header {
-  background-color: #292A2B;
-}
-
-section#crop-tool {
-  margin-top: 415px;
-}
-
-section#drawing {
-  margin-top: 250px;
-}
-
-section#erase-tool {
-  margin-top: 304px;
-}
-
-.light-theme .current {
-  background-color: #262729;
-}
-
-#stickers .category-stickers.open {
-  display: block;
-  overflow: scroll;
-  max-height: 380px;
-}
-
-#simple-shapes .shapes-list {
-  padding-top: 2px;
-}
-
-div#mCSB_7_container {
-  display: inline-block;
-  overflow: scroll;
-  max-height: 558px;
-}
-
-div#mCSB_3_container {
-  overflow: scroll;
-  max-height: 486px;
-}
-
-section#text {
-  top: -10px;
-  position: relative;
-}
-
-section#filters, section#move-tool, section#basics {
+#drawing.tab .md-slider {
+  width: 71%;
+  position: absolute;
   margin-top: -9px;
 }
+#drawing.tab .slider-input {
+  float: right;
+  margin-top: 25px;
+  margin-bottom: 6px;
+}
+#drawing.tab input {
+  width: 43px;
+}
+#drawing.tab .slider-label {
+  color: #fff;
+  position: relative;
+  top: 12px;
+}
 
-figure.filter.col-sm-6.ng-scope {
+#erase-tool {
+  background-color: #2C2D2E;
+  margin-top: 250px;
+  overflow: hidden;
+}
+#erase-tool .ng-scope {
+  margin-top: -9px;
+}
+#erase-tool .current-zoom {
+  background-color: #D9D9DA;
+  border-radius: 2px;
+  width: 40px;
+  float: right;
+  margin-top: 10px;
+}
+#erase-tool p {
+  font-size: 12px;
+  color: #fff;
   margin: 0;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
+#erase-tool .action-icons {
+  margin-left: 114px;
+}
+#erase-tool i.mdi {
+  font-size: 32px;
+  color: #fff;
+  margin-top: -14px;
+}
+#erase-tool i.mdi.mdi-filter-center-focus.fit-to-screen {
+  font-size: 30px;
+  margin-top: -10px;
 }
 
-#objects, #history {
-  background-color: #363739;
+#zoom-tool.tab {
+  background-color: #2C2D2E;
+  margin-top: 400px;
+  height: 59px;
+}
+#zoom-tool.tab .ng-scope {
+  margin-top: -9px;
+}
+#zoom-tool.tab .current-zoom {
+  background-color: #D9D9DA;
+  border-radius: 2px;
+  width: 40px;
+  float: right;
+  margin-top: 10px;
+}
+#zoom-tool.tab p {
+  font-size: 12px;
+  color: #fff;
+  margin: 0;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
+#zoom-tool.tab .action-icons {
+  margin-left: 114px;
+}
+#zoom-tool.tab i.mdi {
+  font-size: 32px;
+  color: #fff;
+  margin-top: -14px;
+}
+#zoom-tool.tab i.mdi.mdi-filter-center-focus.fit-to-screen {
+  font-size: 30px;
+  margin-top: -10px;
+}
+#zoom-tool.tab .toolbar-btn, #zoom-tool.tab input.ng-pristine,
+#zoom-tool.tab .md-thumb:after, #zoom-tool.tab .md-sign:after, #zoom-tool.tab .md-sign {
+  background-color: #D4D5D6;
+  color: #000;
+  border: none;
 }
 
-#objects h3 {
-  background-color: #1D1E1F;
+#color-tool {
+  background-color: #2C2D2E;
+  margin-top: 266px;
+}
+#color-tool .sp-container {
+  background-color: transparent;
+}
+#color-tool .sp-container .sp-input-container > input {
+  color: #fff;
+}
+#color-tool .sp-picker-container,
+#color-tool .sp-container .sp-input-container {
+  border: none;
+}
+#color-tool .md-whiteframe-z1 {
+  box-shadow: none;
+}
+
+.md-whiteframe-z1,
+#zoom-tool section.zoom-container.md-whiteframe-z1,
+#crop-tool .md-whiteframe-z1,
+#color-tool .md-whiteframe-z1.fluid.closed.transition-in {
+  box-shadow: none;
 }
 
 #objects .delete-object, #objects .lock-object, #objects .toggle-visibility {
@@ -364,36 +595,30 @@ figure.filter.col-sm-6.ng-scope {
   border-right: 1px solid #222325;
 }
 
-#history h3, #objects h3 {
-  background-color: #1D1E1F;
-  margin: 0;
+#history, #objects {
+  background-color: #363739;
 }
-
 #history .panel-item, #objects .panel-item {
   border: none;
   border-bottom: solid 1px #1F1F20;
   margin-bottom: 0;
   padding-left: 6%;
-}
-
-#history .panel-item, #objects .panel-item {
-  border: none;
-  border-bottom: solid 1px #222325;
   color: #ededed;
   font-weight: bold;
 }
-
 #history .panel-item > .main-icon, #objects .panel-item > .main-icon {
   color: #ededed;
 }
-
 #history .panel-item:hover, #objects .panel-item:hover {
   cursor: pointer;
   background-color: #2AC1FE;
 }
-
 #history ul, #objects ul {
   padding: 0;
+}
+#history h3, #objects h3 {
+  background-color: #1D1E1F;
+  margin: 0;
 }
 
 .text-styles {

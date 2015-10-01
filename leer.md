@@ -1,5 +1,9 @@
 git clone https://atientas@bitbucket.org/atientas/pixie.git
 
+cd src
+npm install
+gulp scripts
+
 
 ****comandos terminal******
 
@@ -48,20 +52,4 @@ schede di sottomenu
                 
                 
                 
-                
-                
-                <div ed-pretty-scrollbar ed-scroll-axis="y" ed-scroll-theme="light" ed-stickers-categories>
-                                            <section ng-repeat="category in categories" class="sticker-category-container">
-                                                <div class="category-header" data-name="{{ category.name }}">{{ category.name }}</div>
-                
-                
-                                                <div class="category-stickers"
-                                                     ng-class="{ 'open animated slideInDown': activeCategory === category.name, 'dark-bg': category.darkbg }">
-                                                    <div ng-repeat="doodle in category.items track by $index"
-                                                         ng-click="addToCanvas(category, $index+1, $event)" class="sticker">
-                                                        <img class="img-responsive"
-                                                             data-src="assets/images/stickers/{{category.name}}/{{$index+1}}.{{ category.type }}"/>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
+              
