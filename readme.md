@@ -23,7 +23,7 @@ http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 style: 'expanded',
 
 
-### subir a git pages
+### Git pages
 git remote add origin https://github.com/JorgeFigueroa/photo_angular_canvas.git
 git remote -v
 git push -u origin gh-pages
