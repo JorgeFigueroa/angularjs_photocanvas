@@ -1,3 +1,4 @@
+/*comento 123*/
 body {
   background-color: #232425;
 }
@@ -610,6 +611,10 @@ md-dialog.upload-file-dialog.save-dialog.md-default-theme.transition-in md-slide
   color: #ededed;
 }
 #history .panel-item:hover, #objects .panel-item:hover {
+  cursor: pointer;
+  background-color: #2AC1FE;
+}
+#history .jorder, #objects .jorder {
   cursor: pointer;
   background-color: #2AC1FE;
 }

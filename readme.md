@@ -1,10 +1,4 @@
-# To install latest release and update package.json 
-
-npm install
-
-npm install angular-material --save
-
-npm install angular-animate --save
+# instalar package.json
 
 sudo npm install -g grunt-cli
 
@@ -14,12 +8,11 @@ npm install
 
 grunt
 
-#  plugin de sublime para less y sass
-https://packagecontrol.io/packages/LESS
+#  plugin sublime per less y sass
 
 https://packagecontrol.io/packages/SCSS
 
-# file generado x sass documentacion
+# tipo di css generato con sass
 http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 style: 'expanded',
