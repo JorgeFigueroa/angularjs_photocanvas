@@ -1,8 +1,7 @@
-npm install
-gulp scripts
-
-
 # To install latest release and update package.json 
+
+npm install
+
 npm install angular-material --save
 
 npm install angular-animate --save
@@ -22,10 +21,10 @@ https://packagecontrol.io/packages/SCSS
 
 # file generado x sass documentacion
 http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-gruntfile.js linea 35
+
 style: 'expanded',
 
-
+# crear gh-pages en github
 
 create branch for github
 
