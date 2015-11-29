@@ -1,4 +1,4 @@
-# comandos para la terminal
+# PHOTOCANVAS JS
 sudo npm install -g grunt-cli
 
 sudo gem install sass
