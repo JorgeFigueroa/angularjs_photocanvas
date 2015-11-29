@@ -1,12 +1,7 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-	// load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-
-		sass: {
+    grunt.initConfig({
+        sass: {
             dist: {
                 options: {
                     style: 'expanded',
@@ -20,20 +15,34 @@ module.exports = function(grunt) {
                     ext:    ".css"
                 }]
             }
-		},
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 9000,
+                    base: 'src/'
+                }
+            }
+        },
 
         watch: {
-            options: {
-                nospawn: true,
-                livereload: true
+            project: {
+                files: ['src/**/*.js', 'src/**/*.html', 'src/**/*.json', 'src/**/*.css'],
+                options: {
+                    livereload: true
+                }
             },
             sass: {
                 files: ['src/css/**/*.scss'],
                 tasks: ['sass']
             }
         }
-		
-	});
+    });
 
-	grunt.registerTask('default', ['watch']);
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+
+    grunt.registerTask('default', ['connect', 'watch']);
+
 };
