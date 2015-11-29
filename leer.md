@@ -1,5 +1,3 @@
-git clone https://atientas@bitbucket.org/atientas/pixie.git
-
 cd src
 npm install
 gulp scripts
@@ -10,7 +8,6 @@ gulp scripts
 # To install latest release and update package.json 
 npm install angular-material --save
 npm install angular-animate --save
-
 
 
 
@@ -30,24 +27,17 @@ style: 'expanded',
 
 
 
-/*jorge_comentario
+create branch for github
 
+git checkout -b "gh-pages"
 
+create conection
 
-schede di sottomenu
+git remote add origin https://github.com/JorgeFigueroa/photo_angular_canvas.git
 
-            <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-default active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked=""> Active projet <span
-                            style="margin-left: 20px"> X</span>
-                    </label>
-                    <label class="btn btn-default">
-                        <input type="radio" name="options" id="option2" autocomplete="off">Inactive Projet <span
-                            style="margin-left: 20px"> X </span>
-                    </label>
-                </div>
-                
-                
+git remote -v
+
+git push -u origin gh-pages
                 
                 
                 
