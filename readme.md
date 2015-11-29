@@ -11,7 +11,7 @@ npm install
 grunt
 
 
-###Plugin sublime per less y sass
+###Plugin sublime Sass
 
 https://packagecontrol.io/packages/SCSS
 
