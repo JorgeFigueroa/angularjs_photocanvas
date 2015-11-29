@@ -1,5 +1,5 @@
 # PHOTOCANVAS JS
-http://JorgeFigueroa.github.io/photo_angular_canvas/src    
+https://github.com/JorgeFigueroa/photocanvas_js/src
 
 ###Terminal
 ```
