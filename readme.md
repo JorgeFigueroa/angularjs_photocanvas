@@ -25,7 +25,9 @@ style: 'expanded',
 
 ### Git pages
 git remote add origin https://github.com/JorgeFigueroa/photo_angular_canvas.git
+
 git remote -v
+
 git push -u origin gh-pages
                 
                 
