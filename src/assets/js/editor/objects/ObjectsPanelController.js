@@ -6,6 +6,7 @@ angular.module('ImageEditor')
     $scope.setAsActive = function(object) {
         if (object) {
             canvas.fabric.setActiveObject(object);
+
         }
     };
 

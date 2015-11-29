@@ -87,7 +87,7 @@ angular.module('ImageEditor', ['ngMaterial', 'ngAnimate', 'image.crop', 'image.t
     $rootScope.activeTab   = false;
 
 	$rootScope.keys = {
-		google_fonts: 'AIzaSyDhc_8NKxXjtv69htFcUPe6A7oGSQ4om2o',
+		google_fonts: 'AIzaSyDhc_8NKxXjtv69htFcUPe6A7oGSQ4om2o'
 	};
 
 	$rootScope.$watch('activePanel', function() {
