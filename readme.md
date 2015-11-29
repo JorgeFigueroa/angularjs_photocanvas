@@ -24,20 +24,8 @@ http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 style: 'expanded',
 
-# crear gh-pages en github
-
-create branch for github
-
-git checkout -b "gh-pages"
-
-create conection
-
-git remote add origin https://github.com/JorgeFigueroa/photo_angular_canvas.git
-
-git remote -v
-
-git push -u origin gh-pages
-                
+# provar sito
+http://JorgeFigueroa.github.io/photo_angular_canvas/src     
                 
                 
                 
