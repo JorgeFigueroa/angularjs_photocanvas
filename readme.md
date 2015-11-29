@@ -9,15 +9,15 @@ npm install
 
 grunt
 
+
 Plugin sublime per less y sass
 
 https://packagecontrol.io/packages/SCSS
 
+
 Tipo di css generato con sass
 http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
 style: 'expanded',
-
 
 
 # subir a git pages
