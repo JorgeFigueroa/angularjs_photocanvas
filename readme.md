@@ -1,6 +1,7 @@
 # PHOTOCANVAS JS
 http://JorgeFigueroa.github.io/photo_angular_canvas/src    
 
+###Terminal
 sudo npm install -g grunt-cli
 
 sudo gem install sass
