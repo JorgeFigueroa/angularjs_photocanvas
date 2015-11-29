@@ -18,7 +18,7 @@ https://packagecontrol.io/packages/SCSS
 http://livereload.com/
 
 
-###Tipo di css generato con sass
+###Sass reference
 http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 style: 'expanded',
 
