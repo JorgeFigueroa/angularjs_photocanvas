@@ -1,26 +1,26 @@
-cd src
 npm install
 gulp scripts
 
 
-****comandos terminal******
-
 # To install latest release and update package.json 
 npm install angular-material --save
+
 npm install angular-animate --save
 
-
-
 sudo npm install -g grunt-cli
+
 sudo gem install sass
+
 npm install
+
 grunt
 
-plugin de sublime para less y sass
+#  plugin de sublime para less y sass
 https://packagecontrol.io/packages/LESS
+
 https://packagecontrol.io/packages/SCSS
 
-file generado x sass documentacion
+# file generado x sass documentacion
 http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 gruntfile.js linea 35
 style: 'expanded',
