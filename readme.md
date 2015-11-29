@@ -1,5 +1,5 @@
 # PHOTOCANVAS JS
-https://github.com/JorgeFigueroa/photocanvas_js/src
+https://JorgeFigueroa.github.io/photocanvas_js/src
 
 ###Terminal
 ```
